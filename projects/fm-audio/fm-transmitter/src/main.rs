@@ -1,12 +1,14 @@
 use std::{
     env,
+    fs::File,
+    io::BufReader,
     path::Path,
     sync::{Arc, Mutex},
     thread,
 };
 
 use anyhow::Result;
-use hound::{WavReader, WavSpec};
+use hound::{SampleFormat, WavReader, WavSpec};
 use libhackrf::{util::ToComplexI8, HackRf};
 use modulator::Modulator;
 
@@ -32,12 +34,8 @@ fn main() -> Result<()> {
         .map(|x| {
             let wav = WavReader::open(x).unwrap();
             let spec = wav.spec();
-            let samples = wav
-                .into_samples::<f32>()
-                .map(|x| x.unwrap())
-                .collect::<Vec<_>>();
+            let samples: &'static _ = Box::leak(get_float_samples(wav).into_boxed_slice());
 
-            let samples: &'static _ = Box::leak(samples.into_boxed_slice());
             (spec, samples)
         })
         .collect::<Vec<_>>();
@@ -72,5 +70,23 @@ fn main() -> Result<()> {
 
     loop {
         thread::park()
+    }
+}
+
+fn get_float_samples(wav: WavReader<BufReader<File>>) -> Vec<f32> {
+    let channels = wav.spec().channels as usize;
+    match wav.spec().sample_format {
+        SampleFormat::Float => wav
+            .into_samples::<f32>()
+            .map(|x| x.unwrap())
+            .step_by(channels)
+            .collect::<Vec<_>>(),
+        SampleFormat::Int => {
+            let max = (1u32 << (wav.spec().bits_per_sample - 1)) as f32;
+            wav.into_samples::<i32>()
+                .map(|x| x.unwrap() as f32 / max)
+                .step_by(channels)
+                .collect::<Vec<_>>()
+        }
     }
 }
