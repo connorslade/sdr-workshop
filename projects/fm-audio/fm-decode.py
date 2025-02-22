@@ -5,7 +5,7 @@ import numpy as np
 import scipy.io.wavfile as wavfile
 import scipy.signal as signal
 
-STATION = 120.0e6
+STATION = 100.0e6
 RECORD_TIME = 10 # seconds
 GAIN = 0.2
 RF_GAIN = 300
