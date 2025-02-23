@@ -6,8 +6,8 @@ This program is to be used by the instructor to transmit a signal for the studen
 ## Usage
 
 Pass a list of .wav files to play at arguments.
-In this example song will be played first, then song2, them back to song1, and it will repeat indefanataly.
+In this example song1 will be played first, then song2, them back to song1, and it will repeat indefanataly.
 
 ```bash
-$ fm-transmitter song.wav song2.wav
+$ fm-transmitter song1.wav song2.wav
 ```

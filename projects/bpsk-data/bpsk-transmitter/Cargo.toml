@@ -1,0 +1,9 @@
+[package]
+name = "bpsk-transmitter"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.96"
+bitvec = "1.0.1"
+libhackrf = "0.1.1"
