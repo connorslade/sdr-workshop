@@ -6,7 +6,7 @@ use libhackrf::{util::ToComplexI8, HackRf};
 use modulator::{Modulator, ModulatorConfiguration};
 
 const SAMPLE_RATE: u32 = 2_000_000;
-const FREQUENCY: u64 = 100_000_000;
+const FREQUENCY: u64 = 200_000_000;
 const GAIN: u32 = 47;
 const SYMBOL_DURATION: f32 = 0.1;
 
@@ -18,7 +18,7 @@ fn main() -> Result<()> {
     hackrf.set_freq(FREQUENCY)?;
     hackrf.set_txvga_gain(GAIN)?;
 
-    let data = b"Hello World!".to_vec().as_bits().to_owned();
+    let data = b"\x02Hello World!\x03".to_vec().as_bits().to_owned();
     let modulator = UnsafeCell::new(Modulator::new(
         data,
         ModulatorConfiguration {

@@ -1,10 +1,10 @@
 use std::f32::consts::TAU;
 
-use bitvec::vec::BitVec;
+use bitvec::{order::Msb0, vec::BitVec};
 use libhackrf::exports::num_complex::Complex;
 
 pub struct Modulator {
-    data: BitVec<u8>,
+    data: BitVec<u8, Msb0>,
     config: ModulatorConfiguration,
     sample: u64,
 }
@@ -16,7 +16,7 @@ pub struct ModulatorConfiguration {
 }
 
 impl Modulator {
-    pub fn new(data: BitVec<u8>, config: ModulatorConfiguration) -> Self {
+    pub fn new(data: BitVec<u8, Msb0>, config: ModulatorConfiguration) -> Self {
         Self {
             data,
             config,
