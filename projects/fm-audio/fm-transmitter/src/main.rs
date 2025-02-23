@@ -1,11 +1,4 @@
-use std::{
-    env,
-    fs::File,
-    io::BufReader,
-    path::Path,
-    sync::{Arc, Mutex},
-    thread,
-};
+use std::{cell::UnsafeCell, env, fs::File, io::BufReader, path::Path, thread};
 
 use anyhow::Result;
 use hound::{SampleFormat, WavReader, WavSpec};
@@ -45,15 +38,15 @@ fn main() -> Result<()> {
     hackrf.set_freq(FREQUENCY)?;
     hackrf.set_txvga_gain(GAIN)?;
 
-    let audio = Arc::new(Mutex::new(State {
+    let audio = UnsafeCell::new(State {
         modulator: Modulator::empty(),
         songs,
         song_idx: 0,
-    }));
+    });
     hackrf.start_tx(
         |_hackrf, buffer, user| {
-            let data = user.downcast_ref::<Arc<Mutex<State>>>().unwrap();
-            let mut data = data.lock().unwrap();
+            let data = user.downcast_ref::<UnsafeCell<State>>().unwrap();
+            let data = unsafe { &mut *data.get() };
 
             buffer.iter_mut().for_each(|x| {
                 if data.modulator.is_empty() {
@@ -65,7 +58,7 @@ fn main() -> Result<()> {
                 *x = data.modulator.sample().to_i8();
             });
         },
-        audio.clone(),
+        audio,
     )?;
 
     loop {

@@ -8,7 +8,7 @@ import scipy.signal as signal
 STATION = 100.0e6
 RECORD_TIME = 10 # seconds
 GAIN = 0.2
-RF_GAIN = 300
+RF_GAIN = 9.9
 
 def normalize_angle(angle):
     return np.arctan2(np.sin(angle), np.cos(angle))

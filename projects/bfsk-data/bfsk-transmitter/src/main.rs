@@ -3,7 +3,7 @@ use std::{cell::UnsafeCell, thread};
 use anyhow::Result;
 use bitvec::view::AsBits;
 use libhackrf::{util::ToComplexI8, HackRf};
-use modulator::Modulator;
+use modulator::{Modulator, ModulatorConfiguration};
 
 const SAMPLE_RATE: u32 = 2_000_000;
 const FREQUENCY: u64 = 100_000_000;
@@ -18,8 +18,15 @@ fn main() -> Result<()> {
     hackrf.set_freq(FREQUENCY)?;
     hackrf.set_txvga_gain(GAIN)?;
 
-    let data = b"Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!".to_vec().as_bits().to_owned();
-    let modulator = UnsafeCell::new(Modulator::new(SAMPLE_RATE, SYMBOL_DURATION, data));
+    let data = b"Hello World!".to_vec().as_bits().to_owned();
+    let modulator = UnsafeCell::new(Modulator::new(
+        data,
+        ModulatorConfiguration {
+            symbol_duration: (SYMBOL_DURATION * SAMPLE_RATE as f32) as u32,
+            sample_rate: SAMPLE_RATE,
+            frequency_offset: 1000.0,
+        },
+    ));
 
     hackrf.start_tx(
         |_hackrf, samples, user| {
