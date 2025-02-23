@@ -7,7 +7,10 @@ use libhackrf::{util::ToComplexI8, HackRf};
 mod args;
 mod modulate;
 use args::{Args, Command};
-use modulate::{audio::AudioPlayer, bfsk::BfskModulator, Modulator};
+use modulate::{
+    am::AmModulatorConfiguration, bfsk::BfskModulator, fm::FmModulatorConfiguration,
+    player::AudioPlayer, Modulator,
+};
 
 fn main() -> Result<()> {
     let args = Args::parse();
@@ -18,7 +21,19 @@ fn main() -> Result<()> {
     hackrf.set_txvga_gain(args.gain)?;
 
     let modulator: Box<dyn Modulator> = match &args.command {
-        Command::Audio(audio_args) => Box::new(AudioPlayer::new(&args, audio_args)),
+        Command::Fm(audio_args) => Box::new(AudioPlayer::new(
+            FmModulatorConfiguration {
+                sample_rate: args.sample_rate as _,
+                bandwidth: audio_args.bandwidth,
+            },
+            &audio_args.songs,
+        )),
+        Command::Am(audio_args) => Box::new(AudioPlayer::new(
+            AmModulatorConfiguration {
+                sample_rate: args.sample_rate as _,
+            },
+            &audio_args.songs,
+        )),
         Command::Bfsk(bfsk_args) => Box::new(BfskModulator::new(&args, bfsk_args)),
     };
     let modulator = UnsafeCell::new(modulator);

@@ -3,13 +3,14 @@ use std::f32::consts::TAU;
 use hound::WavSpec;
 use libhackrf::exports::num_complex::Complex;
 
+use super::{IntoAudioModulator, Modulator};
+
 pub struct FmModulator<'a> {
     samples: &'a [f32],
     sample_idx: usize,
 
     audio_sample_rate: u32,
-    sample_rate: u64,
-    bandwidth: f32,
+    config: FmModulatorConfiguration,
 
     i: u64,
     phase: f32,
@@ -17,45 +18,36 @@ pub struct FmModulator<'a> {
     next_sample: f32,
 }
 
-impl<'a> FmModulator<'a> {
-    pub fn empty() -> Self {
-        Self {
-            samples: &[],
-            sample_idx: 0,
+#[derive(Clone, Copy)]
+pub struct FmModulatorConfiguration {
+    pub sample_rate: u64,
+    pub bandwidth: f32,
+}
 
-            audio_sample_rate: 0,
-            sample_rate: 0,
-            bandwidth: 0.0,
+impl<'a> IntoAudioModulator<'a> for FmModulatorConfiguration {
+    type Modulator = FmModulator<'a>;
 
-            i: 0,
-            phase: 0.0,
-            sample: 0.0,
-            next_sample: 0.0,
-        }
-    }
-
-    pub fn new(sample_rate: u32, bandwidth: f32, spec: WavSpec, samples: &'a [f32]) -> Self {
-        Self {
+    fn create(&self, spec: WavSpec, samples: &'a [f32]) -> Self::Modulator {
+        FmModulator {
             samples,
             sample_idx: 0,
-
             audio_sample_rate: spec.sample_rate,
-            sample_rate: sample_rate as _,
-            bandwidth,
-
+            config: *self,
             i: 0,
             phase: 0.0,
             sample: 0.0,
             next_sample: 0.0,
         }
     }
+}
 
-    pub fn is_empty(&self) -> bool {
+impl Modulator for FmModulator<'_> {
+    fn done(&self) -> bool {
         self.sample_idx >= self.samples.len()
     }
 
-    pub fn sample(&mut self) -> Complex<f32> {
-        let rate = self.sample_rate / self.audio_sample_rate as u64;
+    fn sample(&mut self) -> Complex<f32> {
+        let rate = self.config.sample_rate / self.audio_sample_rate as u64;
 
         let sample = self.i % rate;
         if sample == 0 {
@@ -67,8 +59,8 @@ impl<'a> FmModulator<'a> {
         self.i += 1;
 
         let t = sample as f32 / rate as f32;
-        let deviation = lerp(self.sample, self.next_sample, t) * self.bandwidth;
-        self.phase += TAU * deviation / self.sample_rate as f32;
+        let deviation = lerp(self.sample, self.next_sample, t) * self.config.bandwidth;
+        self.phase += TAU * deviation / self.config.sample_rate as f32;
 
         (Complex::i() * self.phase).exp()
     }

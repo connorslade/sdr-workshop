@@ -1,28 +1,24 @@
-use std::{fs::File, io::BufReader};
+use std::{fs::File, io::BufReader, path::PathBuf};
 
 use hound::{SampleFormat, WavReader, WavSpec};
 use libhackrf::exports::num_complex::Complex;
 
-use crate::{
-    args::{Args, AudioArgs},
-    modulate::Modulator,
-};
+use crate::modulate::Modulator;
 
-use super::modulator::FmModulator;
+use super::IntoAudioModulator;
 
-pub struct AudioPlayer {
-    modulator: FmModulator<'static>,
-    sample_rate: u32,
-    bandwidth: f32,
+pub struct AudioPlayer<Config: IntoAudioModulator<'static>> {
+    modulator: Config::Modulator,
+    config: Config,
 
     songs: Vec<(WavSpec, &'static [f32])>,
     song_idx: usize,
 }
 
-impl AudioPlayer {
-    pub fn new(args: &Args, audio: &AudioArgs) -> Self {
+impl<Config: IntoAudioModulator<'static>> AudioPlayer<Config> {
+    pub fn new(config: Config, paths: &[PathBuf]) -> Self {
         let mut songs = Vec::new();
-        for song in &audio.songs {
+        for song in paths {
             let wav = WavReader::open(song).unwrap();
             let spec = wav.spec();
             let samples: &'static _ = Box::leak(get_float_samples(wav).into_boxed_slice());
@@ -30,22 +26,25 @@ impl AudioPlayer {
             songs.push((spec, samples));
         }
 
+        assert!(!songs.is_empty(), "You must supply at least one song.");
+        let (spec, samples) = &songs[0];
+
         Self {
-            modulator: FmModulator::empty(),
-            sample_rate: args.sample_rate,
-            bandwidth: audio.bandwidth,
+            modulator: config.create(*spec, samples),
+            config,
+
             songs,
             song_idx: 0,
         }
     }
 }
 
-impl Modulator for AudioPlayer {
+impl<Config: IntoAudioModulator<'static>> Modulator for AudioPlayer<Config> {
     fn sample(&mut self) -> Complex<f32> {
-        if self.modulator.is_empty() {
-            let (spec, samples) = self.songs[self.song_idx];
-            self.modulator = FmModulator::new(self.sample_rate, self.bandwidth, spec, samples);
+        if self.modulator.done() {
             self.song_idx = (self.song_idx + 1) % self.songs.len();
+            let (spec, samples) = self.songs[self.song_idx];
+            self.modulator = self.config.create(spec, samples);
         }
 
         self.modulator.sample()

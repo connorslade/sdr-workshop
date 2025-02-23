@@ -1,4 +1,4 @@
-# bfsk-transmitter
+# transmitter
 
 ```plain
 Usage: transmitter [OPTIONS] <COMMAND>

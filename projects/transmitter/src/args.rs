@@ -21,14 +21,22 @@ pub struct Args {
 
 #[derive(Subcommand)]
 pub enum Command {
-    /// Transmit audio with AM or FM.
-    Audio(AudioArgs),
+    /// Transmit audio with AM.
+    Am(AmArgs),
+    /// Transmit audio with FM.
+    Fm(FmArgs),
     /// Transmit binary data with frequency shift keying.
     Bfsk(BfskArgs),
 }
 
 #[derive(Parser)]
-pub struct AudioArgs {
+pub struct AmArgs {
+    /// Path to .wav files
+    pub songs: Vec<PathBuf>,
+}
+
+#[derive(Parser)]
+pub struct FmArgs {
     /// Bandwidth, in Hz.
     #[arg(long, short, default_value_t = 19_000.0)]
     pub bandwidth: f32,
