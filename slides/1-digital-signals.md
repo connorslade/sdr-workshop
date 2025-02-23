@@ -9,7 +9,7 @@ style: |
     font-size: 2.2em;
   }
 
-  [two-colum] {
+  [two-column] {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -44,7 +44,7 @@ style: |
 
 # Sine Waves
 
-<div two-colum>
+<div two-column>
 <div>
 
 - $f(t)=a\sin(b(t+c))$
@@ -62,7 +62,7 @@ style: |
 </div>
 </div>
 
-<!-- 
+<!--
 sin(x)=-sin(-x)
 -->
 
@@ -70,7 +70,7 @@ sin(x)=-sin(-x)
 
 # What is a Signal?
 
-<div two-colum>
+<div two-column>
 <div>
 
 - In order to digitally process a signal, an Analog to Digital Converter (ADC) is used
@@ -99,10 +99,10 @@ sin(x)=-sin(-x)
 
 # Ambiguity in the Frequency Domain :scream:
 
-<div two-colum>
+<div two-column>
 <div>
 
-- Discrete-time samples have a frequency ambiguity that dose not exist for continuous signals
+- Discrete-time samples have a frequency ambiguity that does not exist for continuous signals
 
 - A series of discrete-time samples can represent *infinitely many* continuous signals
 
@@ -120,7 +120,7 @@ sin(x)=-sin(-x)
 
 # Aliasing
 
-<div two-colum>
+<div two-column>
 <div>
 
 - The blue plots show the true signal and its frequency

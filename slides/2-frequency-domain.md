@@ -9,7 +9,7 @@ style: |
     font-size: 2.2em;
   }
 
-  [two-colum] {
+  [two-column] {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -33,7 +33,7 @@ style: |
 
 # The Frequency Domain
 
-<div two-colum>
+<div two-column>
 <div>
 
 - Usually we think of signals in the *time domain*, where their value is changing through time
@@ -52,7 +52,7 @@ style: |
 
 # The Fourier Transform
 
-<div two-colum>
+<div two-column>
 <div>
 
 - When working with discrete-time signals, we use a discrete Fourier transform (DFT)
@@ -73,7 +73,7 @@ $$
 </div>
 </div>
 
-<!-- 
+<!--
 Because of how the FFT is implemented, it's best to use some power of 2 number of samples as input.
 
 $$
@@ -107,7 +107,7 @@ the negative frequencies will be complex conjugates of the positive frequency co
 
 # Negative Frequency???
 
-<div two-colum>
+<div two-column>
 <div>
 
 - Negative frequency dose not exist physically, it's just a mathematical construct
@@ -126,7 +126,7 @@ the negative frequencies will be complex conjugates of the positive frequency co
 
 # Time-Frequency Properties
 
-<div two-colum>
+<div two-column>
 <div>
 
 - Time-Frequency Properties or 'Fourier properties' tell us how the frequency domain signal is affected by certain modifications to time domain signal
@@ -175,20 +175,6 @@ $$
 \boxed{e^{i2\pi{}f_0t}x(t) \leftrightarrow X(f-f_0)}
 $$
 
-<!-- 
-RTL2832
--->
-
----
-
-# Aside: Hardware Implementation of the Tuner
-
-![RTL2832 Block Diagram](assets/frequency-domain/block-diagram.png)
-
-<!--
-RTL2832
--->
-
 ---
 
 # Time-Frequency Properties: Scaling in Time
@@ -232,7 +218,7 @@ $$
 
 # FFT in Python
 
-<div two-colum>
+<div two-column>
 <div style="width: 49.5%;">
 
 ```python
@@ -299,7 +285,7 @@ What is the frequency range and bin width of the freq array:
 
 # Spectrograms
 
-<div two-colum>
+<div two-column>
 <div>
 
 - A spectrogram is a plot that shows a signal's frequency over time
@@ -322,7 +308,7 @@ Also known as a waterfall plot
 
 # Try It Yourself
 
-<div two-colum>
+<div two-column>
 <div>
 
 - In the folder you downloaded, open SDR++ and tune to 100 MHz, here you can see the signal in real time and decode it using WFM mode

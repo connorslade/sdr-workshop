@@ -9,7 +9,7 @@ style: |
     font-size: 2.2em;
   }
 
-  [two-colum] {
+  [two-column] {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -33,7 +33,7 @@ style: |
 
 # What is Software Defined Radio
 
-<div two-colum>
+<div two-column>
 <div>
 
 - A radio system where components that were traditionally implemented with analog hardware are implemented with software
@@ -58,7 +58,7 @@ FSK is Frequency Shift Keying, which is basically FM modulation for digital info
 
 # RTL2832
 
-<div two-colum>
+<div two-column>
 <div>
 
 - Integrated circuit produced by Realtek Corporation
@@ -81,7 +81,7 @@ FSK is Frequency Shift Keying, which is basically FM modulation for digital info
 
 # RTL-SDR
 
-<div two-colum>
+<div two-column>
 <div>
 
 - rtl-sdr is a software package that includes the librtlsdr library and various command line tools
@@ -128,7 +128,7 @@ pip install pkg_resources pyrtlsdr[lib]
 
 # Example Program Output
 
-<div two-colum>
+<div two-column>
 <div>
 
 - If everything worked, you should see a frequency spectrum like the one on the right.
@@ -150,9 +150,11 @@ pip install pkg_resources pyrtlsdr[lib]
 (also some new things probably)
 This stuff will come up in the next few lessons.
 
+---
+
 # Complex Numbers
 
-<div two-colum>
+<div two-column>
 <div>
 
 - The complex numbers are a number system extending the real numbers
@@ -183,7 +185,7 @@ Complex numbers can be added, subtracted, multiplied, and divided as you would e
 
 # Euler's formula
 
-<div two-colum>
+<div two-column>
 <div style="width: 65%">
 
 - Establishes the relationship between trig functions and the complex exponential function
@@ -209,7 +211,7 @@ $$
 
 # Complex Numbers in Python
 
-<div two-colum>
+<div two-column>
 <div>
 
 - Python actually has native support for complex numbers, but the imaginary unit is $j$ not $i$

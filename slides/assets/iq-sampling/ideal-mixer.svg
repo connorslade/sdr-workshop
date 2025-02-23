@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   viewBox="0 0 140 100"
+   id="svg14"
+   sodipodi:docname="IdealMixer.svg"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs14" />
+  <sodipodi:namedview
+     id="namedview14"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="3.7690106"
+     inkscape:cx="40.063565"
+     inkscape:cy="42.849442"
+     inkscape:window-width="1436"
+     inkscape:window-height="901"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg14" />
+  <circle
+     cx="70"
+     cy="40"
+     r="20"
+     stroke="#000000"
+     stroke-width="0.5"
+     fill="none"
+     id="circle1"
+     style="fill:#e6edf3;fill-opacity:0;stroke:#e6edf3;stroke-opacity:1" />
+  <line
+     x1="56"
+     y1="26"
+     x2="84"
+     y2="54"
+     stroke="#000000"
+     fill="#000000"
+     stroke-width="0.5"
+     id="line1"
+     style="fill:#e6edf3;fill-opacity:1;stroke:#e6edf3;stroke-opacity:1" />
+  <line
+     x1="56"
+     y1="54"
+     x2="84"
+     y2="26"
+     stroke="#000000"
+     fill="#000000"
+     stroke-width="0.5"
+     id="line2"
+     style="fill:#e6edf3;fill-opacity:1;stroke:#e6edf3;stroke-opacity:1" />
+  <line
+     x1="70"
+     y1="63"
+     x2="70"
+     y2="80"
+     stroke="#000000"
+     fill="#000000"
+     id="line3"
+     style="fill:#e6edf3;fill-opacity:1;stroke:#e6edf3;stroke-opacity:1" />
+  <line
+     x1="25"
+     y1="40"
+     x2="47"
+     y2="40"
+     stroke="#000000"
+     fill="#000000"
+     id="line4"
+     style="fill:#e6edf3;fill-opacity:1;stroke:#e6edf3;stroke-opacity:1" />
+  <line
+     x1="91"
+     y1="40"
+     x2="113"
+     y2="40"
+     stroke="#000000"
+     fill="#000000"
+     id="line5"
+     style="fill:#e6edf3;fill-opacity:1;stroke:#e6edf3;stroke-opacity:1" />
+  <polygon
+     points="70,61 72,64 68,64"
+     id="polygon5"
+     style="fill:#e6edf3;fill-opacity:1" />
+  <polygon
+     points="49,40 46,42 46,38"
+     id="polygon6"
+     style="fill:#e6edf3;fill-opacity:1" />
+  <polygon
+     points="116,40 113,42 113,38"
+     id="polygon7"
+     style="fill:#e6edf3;fill-opacity:1" />
+  <text
+     text-anchor="middle"
+     font-family="arial"
+     font-size="5"
+     id="text14"
+     style="fill:#e6edf3;fill-opacity:1"><tspan
+       x="70"
+       y="10"
+       id="tspan7"
+       style="fill:#e6edf3;fill-opacity:1">Ideal mixer</tspan><tspan
+       x="70"
+       y="17"
+       id="tspan8"
+       style="fill:#e6edf3;fill-opacity:1">(multiplier)</tspan><tspan
+       x="70"
+       y="88"
+       id="tspan9"
+       style="fill:#e6edf3;fill-opacity:1">Local</tspan><tspan
+       x="70"
+       y="95"
+       id="tspan10"
+       style="fill:#e6edf3;fill-opacity:1">oscillator</tspan><tspan
+       x="15"
+       y="37"
+       id="tspan11"
+       style="fill:#e6edf3;fill-opacity:1">Input</tspan><tspan
+       x="15"
+       y="44"
+       id="tspan12"
+       style="fill:#e6edf3;fill-opacity:1">signal</tspan><tspan
+       x="125"
+       y="37"
+       id="tspan13"
+       style="fill:#e6edf3;fill-opacity:1">Output</tspan><tspan
+       x="125"
+       y="44"
+       id="tspan14"
+       style="fill:#e6edf3;fill-opacity:1">signal</tspan></text>
+</svg>

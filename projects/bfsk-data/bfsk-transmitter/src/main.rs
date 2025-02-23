@@ -1,4 +1,4 @@
-use std::{cell::UnsafeCell, process, thread};
+use std::{cell::UnsafeCell, iter, process, thread};
 
 use anyhow::Result;
 use bitvec::view::AsBits;
@@ -24,8 +24,7 @@ fn main() -> Result<()> {
     for message in &args.messages {
         data.push(0x02);
         data.extend_from_slice(message.as_bytes());
-        data.push(0x03);
-        data.push(0x03);
+        data.extend(iter::repeat_n(0x03, 2));
     }
 
     let modulator = UnsafeCell::new(Modulator::new(data.as_bits().to_owned(), args.get_config()));
