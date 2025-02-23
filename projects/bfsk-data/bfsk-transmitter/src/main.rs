@@ -25,6 +25,7 @@ fn main() -> Result<()> {
         data.push(0x02);
         data.extend_from_slice(message.as_bytes());
         data.push(0x03);
+        data.push(0x03);
     }
 
     let modulator = UnsafeCell::new(Modulator::new(data.as_bits().to_owned(), args.get_config()));

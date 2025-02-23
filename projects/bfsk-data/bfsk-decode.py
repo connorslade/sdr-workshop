@@ -12,7 +12,7 @@ STATION = 199.995e6
 RF_GAIN = 9.9
 
 # Decoder config
-BAUD = 100
+BAUD = 10
 CHUNK_SIZE = 1024
 CHUNKS_PER_SYMBOL = SAMPLE_RATE / BAUD / CHUNK_SIZE
 
@@ -48,14 +48,13 @@ def got_bit(bit):
     print(("1" if bit else "0"), end="")
     sys.stdout.flush()
 
-    last_byte = bits_to_bytes(bits[-8:])
-    if not running and last_byte == b'\x02':
+    if not running and bits_to_bytes(bits[-8:]) == b'\x02':
         print("«", end="")
         running = True
         bits.clear()
-    elif running and last_byte == b'\x03':
+    elif running and bits_to_bytes(bits[-16:]) == b'\x00':
         print("»", end="")
-        print(bits_to_bytes(bits[:-8]))
+        print(bits_to_bytes(bits[:-16]))
         running = False
         bits.clear()
 
@@ -65,8 +64,7 @@ if __name__ == "__main__":
     sdr.center_freq = STATION
     sdr.gain = RF_GAIN
 
-    last = 0
-    count = 0
+    last, count = 0, 0
 
     while True:
         samples = np.array(sdr.read_samples(CHUNK_SIZE))
