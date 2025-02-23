@@ -1,16 +1,23 @@
 <script lang="ts">
     import { ColorRGBA, WebglLine } from "webgl-plot";
-    import LinePlot from "./lib/LinePlot.svelte";
+    import LinePlot from "./LinePlot.svelte";
+    import { InputState } from "./types";
+    import { TAU } from "./main";
 
     export let name: string;
     export let color: ColorRGBA;
-    export let data: number[] | null = null;
-
-    const TAU: number = 2.0 * Math.PI;
+    export let state: InputState | null = null;
 
     let frequency: number;
     let phase: number = 0;
     let amplitude: number;
+
+    $: (() => {
+        if (!state) return;
+        state.frequency = frequency;
+        state.phase = phase;
+        state.amplitude = amplitude;
+    })();
 </script>
 
 <div class="container">
@@ -23,15 +30,14 @@
         callback={(lines) => {
             let line = lines[0];
 
-            if (data != null && data.length != line.numPoints)
-                data.length = line.numPoints;
+            if (state) state.data.length = line.numPoints;
 
             for (let i = 0; i < line.numPoints; i++) {
                 let t = (i / line.numPoints) * TAU;
                 let y = amplitude * Math.sin(t * frequency + phase * TAU);
 
                 line.setY(i, y);
-                if (data != null) data[i] = y;
+                if (state) state.data[i] = y;
             }
         }}
     />
