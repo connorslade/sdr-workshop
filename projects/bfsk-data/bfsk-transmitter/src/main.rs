@@ -8,7 +8,7 @@ use modulator::{Modulator, ModulatorConfiguration};
 const SAMPLE_RATE: u32 = 2_000_000;
 const FREQUENCY: u64 = 200_000_000;
 const GAIN: u32 = 47;
-const SYMBOL_DURATION: f32 = 0.1;
+const BAUD: u32 = 10;
 
 mod modulator;
 
@@ -22,7 +22,7 @@ fn main() -> Result<()> {
     let modulator = UnsafeCell::new(Modulator::new(
         data,
         ModulatorConfiguration {
-            symbol_duration: (SYMBOL_DURATION * SAMPLE_RATE as f32) as u32,
+            symbol_duration: SAMPLE_RATE / BAUD,
             sample_rate: SAMPLE_RATE,
             frequency_offset: 1000.0,
         },

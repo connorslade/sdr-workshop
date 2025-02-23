@@ -6,14 +6,16 @@ import numpy as np
 import scipy.io.wavfile as wavfile
 import scipy.signal as signal
 
+# Radio config
 SAMPLE_RATE = 250_000
-SYMBOL_DURATION = 0.1
 STATION = 199.995e6
-GAIN = 0.2
 RF_GAIN = 9.9
 
-CHUNK_SIZE = 2048
-CHUNKS_PER_SYMBOL = SAMPLE_RATE * SYMBOL_DURATION / CHUNK_SIZE
+# Decoder config
+BAUD = 10
+CHUNK_SIZE = 256
+CHUNKS_PER_SYMBOL = SAMPLE_RATE / BAUD / CHUNK_SIZE
+
 
 def process_samples(samples):
     b, a = signal.butter(5, 2_000, "low", fs=sdr.sample_rate)
@@ -63,7 +65,7 @@ if __name__ == "__main__":
     sdr.center_freq = STATION
     sdr.gain = RF_GAIN
 
-    last = None
+    last = 0
     count = 0
 
     while True:
@@ -71,12 +73,12 @@ if __name__ == "__main__":
         angles = process_samples(samples)
         bit = np.mean(angles) > 0.0
 
-        count += 1
         if bit != last:
             count = round(count / CHUNKS_PER_SYMBOL)
             for _ in range(count): got_bit(last)
 
             last = bit
             count = 0
+        count += 1
 
     sdr.close()
