@@ -1,3 +1,5 @@
+use std::ffi::OsString;
+
 use clap::Parser;
 
 use crate::modulator::ModulatorConfiguration;
@@ -23,10 +25,12 @@ pub struct Args {
     /// After transmission of all messages ends, loop through again.
     #[arg(long, short, default_value_t = true)]
     pub repeat: bool,
+    #[arg(long, short, default_value_t = false)]
+    pub no_transmission_flags: bool,
 
     /// Message to send. Multiple can be supplied.
     #[arg(default_value = "Hello World!")]
-    pub messages: Vec<String>,
+    pub messages: Vec<OsString>,
 }
 
 impl Args {

@@ -8,13 +8,15 @@ import scipy.signal as signal
 
 # Radio config
 SAMPLE_RATE = 250_000
-STATION = 199.995e6
+STATION = 100.0e6
 RF_GAIN = 9.9
+FREQ_CORRECTION = 25
 
 # Decoder config
 BAUD = 10
 CHUNK_SIZE = 1024
 CHUNKS_PER_SYMBOL = SAMPLE_RATE / BAUD / CHUNK_SIZE
+print(f'Chunks Per Symbol: {CHUNKS_PER_SYMBOL}')
 
 
 def process_samples(samples):
@@ -52,7 +54,7 @@ def got_bit(bit):
         print("«", end="")
         running = True
         bits.clear()
-    elif running and bits_to_bytes(bits[-16:]) == b'\x00':
+    elif running and bits_to_bytes(bits[-16:]) == b'\x03\x03':
         print("»", end="")
         print(bits_to_bytes(bits[:-16]))
         running = False
@@ -63,6 +65,7 @@ if __name__ == "__main__":
     sdr.sample_rate = SAMPLE_RATE
     sdr.center_freq = STATION
     sdr.gain = RF_GAIN
+    sdr.freq_correction = FREQ_CORRECTION
 
     last, count = 0, 0
 
