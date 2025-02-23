@@ -7,8 +7,7 @@
 
 ## Todo
 
-- Create slides on IQ Sampling (very important)
-  - Figure out how to explain IQ sampling in an easy-ish to understand way
+- AM project?
 
 ## Ideas
 

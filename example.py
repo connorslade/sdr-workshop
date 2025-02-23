@@ -10,7 +10,7 @@ FFT_SIZE = 512
 # and will actually really mess up the signal.
 sdr = RtlSdr()
 sdr.sample_rate = 2.048e6
-sdr.center_freq = 99.1e6  # 99.1 MHz
+sdr.center_freq = 100.0e6  # 100.0 MHz
 sdr.gain = 20
 
 # Discard the first ~2k samples as they don't contain useful data. This is just

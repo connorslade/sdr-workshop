@@ -1,9 +1,9 @@
 use std::f32::consts::TAU;
 
 use hound::WavSpec;
-use num_complex::Complex;
+use libhackrf::exports::num_complex::Complex;
 
-pub struct Modulator<'a> {
+pub struct FmModulator<'a> {
     samples: &'a [f32],
     sample_idx: usize,
 
@@ -17,7 +17,7 @@ pub struct Modulator<'a> {
     next_sample: f32,
 }
 
-impl<'a> Modulator<'a> {
+impl<'a> FmModulator<'a> {
     pub fn empty() -> Self {
         Self {
             samples: &[],
