@@ -1,37 +1,42 @@
-use std::{cell::UnsafeCell, thread};
+use std::{cell::UnsafeCell, process, thread};
 
 use anyhow::Result;
 use bitvec::view::AsBits;
+use clap::Parser;
 use libhackrf::{util::ToComplexI8, HackRf};
-use modulator::{Modulator, ModulatorConfiguration};
+use modulator::Modulator;
 
-const SAMPLE_RATE: u32 = 2_000_000;
-const FREQUENCY: u64 = 200_000_000;
-const GAIN: u32 = 47;
-const BAUD: u32 = 10;
-
+mod args;
 mod modulator;
+use args::Args;
 
 fn main() -> Result<()> {
-    let hackrf = HackRf::open()?;
-    hackrf.set_sample_rate(SAMPLE_RATE)?;
-    hackrf.set_freq(FREQUENCY)?;
-    hackrf.set_txvga_gain(GAIN)?;
+    let args = Args::parse();
 
-    let data = b"\x02Hello World!\x03".to_vec().as_bits().to_owned();
-    let modulator = UnsafeCell::new(Modulator::new(
-        data,
-        ModulatorConfiguration {
-            symbol_duration: SAMPLE_RATE / BAUD,
-            sample_rate: SAMPLE_RATE,
-            frequency_offset: 1000.0,
-        },
-    ));
+    println!("Transmitting {:?}", args.messages);
+
+    let hackrf = HackRf::open()?;
+    hackrf.set_sample_rate(args.sample_rate)?;
+    hackrf.set_freq(args.frequency)?;
+    hackrf.set_txvga_gain(args.gain)?;
+
+    let mut data = Vec::new();
+    for message in &args.messages {
+        data.push(0x02);
+        data.extend_from_slice(message.as_bytes());
+        data.push(0x03);
+    }
+
+    let modulator = UnsafeCell::new(Modulator::new(data.as_bits().to_owned(), args.get_config()));
 
     hackrf.start_tx(
         |_hackrf, samples, user| {
             let modulator = user.downcast_ref::<UnsafeCell<Modulator>>().unwrap();
             let modulator = unsafe { &mut *modulator.get() };
+
+            if modulator.done() {
+                process::abort();
+            }
 
             samples
                 .iter_mut()

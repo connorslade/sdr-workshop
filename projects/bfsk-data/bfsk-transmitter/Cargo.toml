@@ -6,4 +6,5 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.96"
 bitvec = "1.0.1"
+clap = { version = "4.5.30", features = ["derive"] }
 libhackrf = "0.1.1"

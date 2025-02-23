@@ -12,8 +12,8 @@ STATION = 199.995e6
 RF_GAIN = 9.9
 
 # Decoder config
-BAUD = 10
-CHUNK_SIZE = 256
+BAUD = 100
+CHUNK_SIZE = 1024
 CHUNKS_PER_SYMBOL = SAMPLE_RATE / BAUD / CHUNK_SIZE
 
 
@@ -55,7 +55,7 @@ def got_bit(bit):
         bits.clear()
     elif running and last_byte == b'\x03':
         print("»", end="")
-        if running: print(bits_to_bytes(bits[:-8]))
+        print(bits_to_bytes(bits[:-8]))
         running = False
         bits.clear()
 
