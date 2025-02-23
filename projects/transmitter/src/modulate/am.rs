@@ -30,15 +30,15 @@ impl<'a> IntoAudioModulator<'a> for AmModulatorConfiguration {
 
 impl Modulator for AmModulator<'_> {
     fn done(&self) -> bool {
-        let rate = self.config.sample_rate / self.audio_sample_rate as u64;
-        (self.i / rate) as usize >= self.samples.len()
+        let rate = self.config.sample_rate as f64 / self.audio_sample_rate as f64;
+        (self.i as f64 / rate).round() as usize >= self.samples.len()
     }
 
     fn sample(&mut self) -> Complex<f32> {
-        let rate = self.config.sample_rate / self.audio_sample_rate as u64;
-        let sample = self.samples[(self.i / rate) as usize];
+        let rate = self.config.sample_rate as f64 / self.audio_sample_rate as f64;
+        let sample = self.samples[(self.i as f64 / rate).round() as usize];
         self.i += 1;
 
-        (sample * 0.05).into()
+        sample.into()
     }
 }
