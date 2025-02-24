@@ -13,6 +13,7 @@ pub struct AmModulator<'a> {
 #[derive(Clone, Copy)]
 pub struct AmModulatorConfiguration {
     pub sample_rate: u64,
+    pub modulation: f32,
 }
 
 impl<'a> IntoAudioModulator<'a> for AmModulatorConfiguration {
@@ -39,6 +40,7 @@ impl Modulator for AmModulator<'_> {
         let sample = self.samples[(self.i as f64 / rate).round() as usize];
         self.i += 1;
 
+        let sample = (sample / 2.0 + 1.0) * self.config.modulation;
         sample.into()
     }
 }

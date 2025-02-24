@@ -31,6 +31,9 @@ pub enum Command {
 
 #[derive(Parser)]
 pub struct AmArgs {
+    /// The percent modulation to use. (0<x≤1)
+    #[arg(long, short, default_value_t = 0.75)]
+    pub modulation: f32,
     /// Path to .wav files
     pub songs: Vec<PathBuf>,
 }

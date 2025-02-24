@@ -21,18 +21,19 @@ fn main() -> Result<()> {
     hackrf.set_txvga_gain(args.gain)?;
 
     let modulator: Box<dyn Modulator> = match &args.command {
-        Command::Fm(audio_args) => Box::new(AudioPlayer::new(
+        Command::Fm(fm) => Box::new(AudioPlayer::new(
             FmModulatorConfiguration {
                 sample_rate: args.sample_rate as _,
-                bandwidth: audio_args.bandwidth,
+                bandwidth: fm.bandwidth,
             },
-            &audio_args.songs,
+            &fm.songs,
         )),
-        Command::Am(audio_args) => Box::new(AudioPlayer::new(
+        Command::Am(am) => Box::new(AudioPlayer::new(
             AmModulatorConfiguration {
                 sample_rate: args.sample_rate as _,
+                modulation: am.modulation,
             },
-            &audio_args.songs,
+            &am.songs,
         )),
         Command::Bfsk(bfsk_args) => Box::new(BfskModulator::new(&args, bfsk_args)),
     };
