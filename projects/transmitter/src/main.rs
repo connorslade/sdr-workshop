@@ -57,6 +57,11 @@ fn main() -> Result<()> {
         modulator,
     )?;
 
+    ctrlc::set_handler(move || {
+        let _ = hackrf.stop_tx();
+        process::exit(0);
+    })?;
+
     loop {
         thread::park();
     }

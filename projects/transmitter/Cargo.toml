@@ -7,5 +7,6 @@ edition = "2021"
 anyhow = "1.0.96"
 bitvec = "1.0.1"
 clap = { version = "4.5.30", features = ["derive"] }
+ctrlc = "3.4.5"
 hound = "3.5.1"
 libhackrf = "0.1.1"
