@@ -10,9 +10,12 @@ style: |
   }
 
   [two-column] {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  [two-column] > div {
+    align-self: center;
   }
 
   [center] {
@@ -44,6 +47,8 @@ style: |
 
 # <!-- fit --> Analog Modulation
 
+I'm only covering AM and FM here because they are a lot more common than PM.
+
 ---
 
 <div two-column>
@@ -52,22 +57,28 @@ style: |
 ## Amplitude Modulation (AM)
 
 - Simplest analog modulation scheme
-- Became popular in the 1900s for wirelessly transmitting morse code and later audio (AM Radio)
+- Popularized in the 1900s for wirelessly transmitting morse code and later audio (AM Radio)
+- Very susceptible to noise and interference
 
 </div>
-<div style="width: 100%">
+<div>
 
 ![Amplitude Modulation](assets/data-modulation/amplitude-modulation.svg)
 
 </div>
 
+<!--
+Due to the high susceptibility to noise / interference *much* higher broadcast power is needed to overcome interference
+-->
+
 ---
 
 ## Amplitude Modulation with IQ Samples
 
-- An amplitude modulated signal can be represented as $A(t)*e^{i2\pi{}f_ct}$
-  - $A(t)$ is the signal to broadcast
+- An amplitude modulated signal can be represented as $S(t)*e^{i2\pi{}f_ct}$
+  - $S(t)$ is the signal to broadcast
   - $f_c$ is the carrier frequency
+- If we set the SDR center frequency to $f_c$, we can completely omit the complex exponential
 
 ---
 
@@ -76,16 +87,15 @@ style: |
 
 ## Frequency Modulation (FM)
 
-</div>
-<div style="width: 100%">
-
-![Amplitude Modulation](assets/data-modulation/frequency-modulation.svg)
+- The instantaneous frequency of the carrier is modulated by the signal
+- Much less susceptible to noise and interference (Thats why we still use FM radio)
 
 </div>
+<div>
 
----
+![Frequency Modulation](assets/data-modulation/frequency-modulation.svg)
 
-## Other Analog Modulations
+</div>
 
 ---
 
@@ -95,12 +105,22 @@ Instead of just being referred to as modulations, digital schemes are called shi
 
 ---
 
-## Amplitude Shift Keying (ASK)
+# Binary Shift Keying
+
+<img alt="Digital Modulations" src="assets/data-modulation/digital-modulations.svg" width="100%" />
 
 ---
 
-## Frequency Shift Keying (FSK)
+# Binary Amplitude Shift Keying Constellation
+
+<div center>
+<img alt="BASK" src="assets/data-modulation/bask.gif" width="90%" />
+</div>
 
 ---
 
-## Phase Shift Keying (PSK)
+# Binary Phase Shift Keying Constellation
+
+<div center>
+<img alt="BASK" src="assets/data-modulation/bpsk.gif" width="90%" />
+</div>

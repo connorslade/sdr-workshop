@@ -17,16 +17,16 @@ Options:
 ```
 
 ```plain
-Transmit audio with AM or FM
+Transmit audio with AM
 
-Usage: transmitter audio [OPTIONS] [SONGS]...
+Usage: transmitter am [OPTIONS] [SONGS]...
 
 Arguments:
   [SONGS]...  Path to .wav files
 
 Options:
-  -b, --bandwidth <BANDWIDTH>  Bandwidth, in Hz [default: 19000]
-  -h, --help                   Print help
+  -m, --modulation <MODULATION>  The percent modulation to use. (0<x≤1) [default: 0.75]
+  -h, --help                     Print help
 ```
 
 ```plain
