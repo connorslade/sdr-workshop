@@ -28,9 +28,9 @@ style: |
   }
 ---
 
-<h1 title>Software Defined Radio and Digital Signal Processing Workshop</h1>
+<h1 title>Data Modulation</h1>
 
-## Connor Slade
+## SDR and DSP Workshop
 
 ---
 

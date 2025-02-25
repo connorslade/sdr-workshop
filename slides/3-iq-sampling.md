@@ -25,9 +25,10 @@ style: |
   }
 ---
 
-<h1 title>Software Defined Radio and Digital Signal Processing Workshop</h1>
+<h1 title>IQ Sampling
+</h1>
 
-## Connor Slade
+## SDR and DSP Workshop
 
 ---
 
@@ -53,7 +54,7 @@ It would be impractical to sample at higher rates due to limited data transfer r
 
 - A *mixer* is a device that combines two input signals to produce an output signal with frequencies equal to the sum and difference of the input frequencies
 - In software, we just need to multiply the samples of each signal
-- See [Interactive Signal Mixing]()
+- See [Interactive Signal Mixing](https://files.connorcode.com/Documents/sdr-workshop/interactive/signal-mixing/index.html)
 
 </div>
 <div style="width: 100%;margin-left: 20px;">
@@ -65,7 +66,7 @@ It would be impractical to sample at higher rates due to limited data transfer r
 
 ---
 
-# Frequency Ambiguity
+# Another Frequency Ambiguity
 
 - Internally SDRs use a local oscillator (LO) and a mixer to shift incoming RF (radio frequency) signals
 - Unfortunately when the RF is shifted down, some frequencies become negative, which appear the same as positive signals

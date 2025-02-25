@@ -31,6 +31,10 @@ style: |
 
 ---
 
+# <!-- fit --> The Frequency Domain
+
+---
+
 # The Frequency Domain
 
 <div two-column>

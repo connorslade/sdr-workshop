@@ -36,9 +36,40 @@ style: |
   }
 ---
 
-<h1 title>Software Defined Radio and Digital Signal Processing Workshop</h1>
+<h1 title>Digital Signals</h1>
 
-## Connor Slade
+## SDR and DSP Workshop
+
+---
+
+<div two-column>
+<div>
+
+# Radians
+
+- A unit for angle based on the radius of a circle
+- Often easier to work with mathematically
+- Approximately $57.2958^\circ{}$
+
+<br>
+
+<div center>
+
+|Degrees|$0^\circ{}$|$90^\circ{}$|$180^\circ{}$|$270^\circ{}$|$360^\circ{}$|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|Radians|$0$|$\pi/2$|$\pi$|$3\pi{}/2$|$2\pi{}$|
+
+</div>
+</div>
+<div style="width: 37%">
+
+![Radians](assets/digital-signals/radians.gif)
+
+</div>
+
+<!--
+R=(a*pi)/180
+-->
 
 ---
 
@@ -47,12 +78,12 @@ style: |
 <div two-column>
 <div>
 
-- $f(t)=a\sin(b(t+c))$
+- $f(t)=a\sin(2\pi{}ft+p)$
   - Amplitude: $a$
-  - Frequency: $b/2\pi$
-  - Phase Shift: $c$
-- $\cos(x) = \sin(x + \frac{\pi}{2})$
-- $\cos(x)=\cos(-x)$
+  - Frequency: $f$
+  - Phase Shift: $p$
+- $\cos(t) = \sin(t + \frac{\pi}{2})$
+- $\cos(t)=\cos(-t)$
 
 </div>
 <div>

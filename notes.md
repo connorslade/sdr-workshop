@@ -7,7 +7,7 @@
 
 ## Todo
 
-- AM project?
+- Bundle Audacity
 
 ## Ideas
 
