@@ -47,7 +47,7 @@ fn main() -> Result<()> {
             let modulator = unsafe { &mut *modulator.get() };
 
             if modulator.done() {
-                process::abort();
+                process::exit(0);
             }
 
             samples

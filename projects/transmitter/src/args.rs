@@ -1,6 +1,6 @@
 use std::{ffi::OsString, path::PathBuf};
 
-use clap::{Parser, Subcommand};
+use clap::{ArgAction, Parser, Subcommand};
 
 #[derive(Parser)]
 #[command(version, about)]
@@ -56,7 +56,7 @@ pub struct BfskArgs {
     #[arg(long, short, default_value_t = 10)]
     pub baud: u32,
     /// After transmission of all messages ends, loop through again.
-    #[arg(long, short, default_value_t = true)]
+    #[arg(long, short, action(ArgAction::SetFalse), default_value_t = true)]
     pub repeat: bool,
     /// Don't transmit the 0x02 and 0x03 bytes denoting the start and end of a message
     #[arg(long, short, default_value_t = false)]
