@@ -29,6 +29,11 @@ style: |
 
 ## SDR and DSP Workshop
 
+<!--
+We use radio technology like FM radio, Bluetooth, Wi-Fi, and Cellular daily, but how do they actually work?
+In this workshop you will learn some of how these systems work and implement your own simplified versions.
+-->
+
 ---
 
 # What is Software Defined Radio

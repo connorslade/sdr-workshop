@@ -96,3 +96,10 @@ shift = np.exp(2j * np.pi * freq * t)
 <!--
 j is used over i because in electrical engineering i is used for current
 -->
+
+---
+
+# What is an Audio Signal (Delete?)
+
+- Sound travels through air rather than propagating on its own like radio waves
+- We can also represent audio as a sequence of samples

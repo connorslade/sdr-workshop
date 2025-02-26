@@ -7,7 +7,9 @@
 
 ## Todo
 
-- Bundle Audacity
+- Bundle Audacity?
+- BFSK project slides & document
+- Spectrogram project slides & document
 
 ## Ideas
 
@@ -18,7 +20,7 @@
   - SDR++
 - Project ideas:
   - Decode a FM radio station to audio (week 2)
-  - Decode binary data from a basic PSK (week 3 or 4)
+  - Decode binary data from a basic FSK (week 3 or 4)
 
 ## Links
 
