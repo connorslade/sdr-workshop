@@ -1,7 +1,7 @@
 ---
 marp: true
 paginate: true
-footer: "SDR and DSP Workshop &bull; Introduction"
+footer: "SDR Workshop &bull; Introduction"
 math: katex
 class: invert
 style: |
@@ -27,7 +27,7 @@ style: |
 
 <h1 title>Introduction</h1>
 
-## SDR and DSP Workshop
+## Software Defined Radio Workshop
 
 <!--
 We use radio technology like FM radio, Bluetooth, Wi-Fi, and Cellular daily, but how do they actually work?

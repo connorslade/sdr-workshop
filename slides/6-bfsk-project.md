@@ -1,7 +1,7 @@
 ---
 marp: true
 paginate: true
-footer: "SDR and DSP Workshop &bull; BFSK Project"
+footer: "SDR Workshop &bull; BFSK Project"
 math: katex
 class: invert
 style: |
@@ -25,8 +25,8 @@ style: |
   }
 ---
 
-<h1 title>Software Defined Radio and Digital Signal Processing Workshop</h1>
+<h1 title>Binary Data Transmission Project</h1>
 
-## Connor Slade
+## Software Defined Radio Workshop
 
 ---

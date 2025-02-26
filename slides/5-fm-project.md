@@ -1,7 +1,7 @@
 ---
 marp: true
 paginate: true
-footer: "SDR and DSP Workshop &bull; FM Project"
+footer: "SDR Workshop &bull; FM Project"
 math: katex
 class: invert
 style: |
@@ -27,7 +27,7 @@ style: |
 
 <h1 title>FM Radio Project</h1>
 
-## SDR and DSP Workshop
+## Software Defined Radio Workshop
 
 ---
 

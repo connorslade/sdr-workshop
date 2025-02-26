@@ -1,7 +1,7 @@
 ---
 marp: true
 paginate: true
-footer: "SDR and DSP Workshop &bull; IQ Sampling"
+footer: "SDR Workshop &bull; IQ Sampling"
 math: katex
 class: invert
 style: |
@@ -28,7 +28,7 @@ style: |
 <h1 title>IQ Sampling
 </h1>
 
-## SDR and DSP Workshop
+## Software Defined Radio Workshop
 
 ---
 

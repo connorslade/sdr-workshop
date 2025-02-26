@@ -116,7 +116,7 @@ samples = offset(samples, 100_000)
 
 ### Ignoring Other Stations
 
-Now that the signal we are interested in is centred at 0 Hz, we can make use of a _Low Pass Filter_ to filter out other nearby stations or interference.
+Now that the signal we are interested in is centred at 0 Hz, we can make use of a *Low Pass Filter* to filter out other nearby stations or interference.
 The Scipy `signal.butter` function is used to design a filter with a given order and cutoff.
 It returns two lists, b and a, that represent the filter.
 

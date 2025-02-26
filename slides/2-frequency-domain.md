@@ -1,7 +1,7 @@
 ---
 marp: true
 paginate: true
-footer: "SDR and DSP Workshop &bull; The Frequency Domain"
+footer: "SDR Workshop &bull; The Frequency Domain"
 math: katex
 class: invert
 style: |
@@ -25,9 +25,9 @@ style: |
   }
 ---
 
-<h1 title>Software Defined Radio and Digital Signal Processing Workshop</h1>
+<h1 title>The Frequency Domain</h1>
 
-## Connor Slade
+## Software Defined Radio Workshop
 
 ---
 
