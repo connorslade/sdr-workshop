@@ -42,7 +42,7 @@ In this workshop you will learn some of how these systems work and implement you
 <div>
 
 - A radio system where components that were traditionally implemented with analog hardware are implemented with software
-- SDR as a thing is a device that receives and digitizes RF data for processing on a computer
+- SDR as a thing is a device that receives and digitizes radio frequency data for processing on a computer
 - Building blocks of wireless communication protocols like Wi-Fi (QAM), Bluetooth (FSK), and Cellular (QAM)
 
 </div>
@@ -137,7 +137,6 @@ sdr.close()
 
 # Example Program Output
 
-
 - If everything worked, you should see a frequency spectrum like the one here
 - I'm transmitting FM audio data at 100Mhz, so that's what the signal is
 
@@ -148,3 +147,15 @@ sdr.close()
 
 </div>
 </div>
+
+---
+
+# Workshop Outline
+
+1. Digital Signals
+1. IQ Sampling
+1. Data Modulation
+1. Projects
+   1. FM Radio
+   1. Binary Data Transmission
+   1. Spectrogram

@@ -190,3 +190,88 @@ Human hearing is approx 20Hz to 20,000 Hz
 - 44,100 Hz - CD audio (most common)
 - 48,000 Hz - Standard sample rate for professional applications
 -->
+
+---
+
+# The Frequency Domain
+
+<div two-column>
+<div>
+
+- Usually we think of signals in the *time domain*, where their value is changing through time
+- All signals can be represented with an infinite sum of sine waves with varying frequency, amplitude, and phases
+- A function or signal can be converted between the time and frequency domains with the *Fourier transform*
+
+</div>
+<div style="width: 90%; margin-left: 25px;">
+
+![A signal in the time and frequency domain](assets/frequency-domain/freq-domain.gif)
+
+</div>
+</div>
+
+---
+
+# Time-Frequency Properties
+
+<div two-column>
+<div>
+
+- Time-Frequency Properties or 'Fourier properties' tell us how the frequency domain signal is affected by certain modifications to time domain signal
+- There are more properties than what is covered here
+
+</div>
+<div style="width: 70%;">
+
+1. Linearity
+1. Frequency Shift
+1. Scaling in Time
+
+</div>
+</div>
+
+<!--
+Additional properties:
+
+- Convolution in Time Property
+- Convolution in Frequency Property
+-->
+
+---
+
+# Time-Frequency Properties: Linearity
+
+- If we add two signals in the time domain, the two frequency domain signals will also be added together.
+- If either of the time domain signals are scaled by a scalar, the frequency domain signal will also scaled by the same amount.
+
+<br />
+
+$$
+\boxed{ax(t)+bx(t) \leftrightarrow aX(f)+bY(f)}
+$$
+
+---
+
+# Time-Frequency Properties: Frequency Shift
+
+- By multiplying a time domain signal by a complex sinusoid at frequency $f_0$, we shift it by $f_0$ in the frequency domain
+- This is how the tuner in the RTL-SDR is able to change the center frequency, it also allows us to focus in on specific parts of the spectrum in software
+
+<br />
+
+$$
+\boxed{e^{i2\pi{}f_0t}x(t) \leftrightarrow X(f-f_0)}
+$$
+
+---
+
+# Time-Frequency Properties: Scaling in Time
+
+- Scaling in the time domain causes an inverse scaling in the frequency domain
+- This means that if we want to transfer data at a faster rate, we have to use physically more of the bandwidth
+
+<br />
+
+$$
+\boxed{x(at) \leftrightarrow X(\frac{f}{a} \times \frac{1}{\lvert a \rvert})}
+$$
