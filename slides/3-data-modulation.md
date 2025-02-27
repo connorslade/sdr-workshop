@@ -73,12 +73,14 @@ Due to the high susceptibility to noise / interference *much* higher broadcast p
 
 ---
 
-## Amplitude Modulation with IQ Samples
+### Amplitude Modulation Percent
 
-- An amplitude modulated signal can be represented as $S(t)*e^{i2\pi{}f_ct}$
-  - $S(t)$ is the signal to broadcast
-  - $f_c$ is the carrier frequency
-- If we set the SDR center frequency to $f_c$, we can completely omit the complex exponential
+- To reduce distortion, the modulation percent can be decreased
+- Modulation over 100% is called over-modulation
+
+<div center>
+<img alt="" src="assets/data-modulation/am-modulation-percent.gif" width="70%"></img>
+</div>
 
 ---
 
@@ -96,6 +98,10 @@ Due to the high susceptibility to noise / interference *much* higher broadcast p
 ![Frequency Modulation](assets/data-modulation/frequency-modulation.svg)
 
 </div>
+
+---
+
+### Frequency Modulation Bandwidth
 
 ---
 
