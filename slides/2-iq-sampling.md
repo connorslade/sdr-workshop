@@ -86,6 +86,12 @@ It would be impractical to sample at higher rates due to limited data transfer r
 <img alt="IQ Over Time" src="assets/iq-sampling/iq-over-time.gif" width="90%"></img>
 </div>
 
+<!-- 
+The blue dot shows the signal itself (inphase) and the orange shows it 90° out of phase (quadrature).
+
+The quadrature view gives us more info on the signal, if it leads the blue its positive and if it lags behind its negative.
+-->
+
 ---
 
 # IQ Sampling
@@ -129,6 +135,70 @@ It would be impractical to sample at higher rates due to limited data transfer r
 
 ---
 
+# The Power of Quadrature Sampling
+
+- Although we are using IQ sampling out of necessity to handle negative frequencies, *analytic signals* (the continuous version of IQ sampling) are commonly used in mathematical analysis
+- Analytic signals have instantaneous amplitude and phase
+
+---
+
+<div two-column-grid style="grid-template-columns: 5fr 3fr;">
+<div>
+
+## Instantaneous Amplitude
+
+- With a real signal it's hard to determine the *power* (envelope) of a signal
+  - You can only really measure it at the peak of the signal ($\frac{\pi}{2}$, $\frac{3\pi}{2}$, etc.)
+  - You probably didn't sample the exact peak
+- We can measure the magnitude (amplitude) of any IQ sample
+
+</div>
+<div>
+
+![Instantaneous Amplitude](assets/iq-sampling/instantaneous-amplitude.gif)
+
+</div>
+</div>
+
+---
+
+### Envelope
+
+- The envelope of a signal is calculated as the magnitude of its IQ samples
+
+<br>
+
+<div center>
+<img alt="Envelope" src="assets/iq-sampling/envelope.svg" width="50%"></img>
+</div>
+
+---
+
+<div two-column-grid style="grid-template-columns: 5fr 3fr;">
+<div>
+
+## Instantaneous Phase
+
+- There's no easy way to get the instantaneous phase from a real signal
+  - Other that converting it into an analytical signal at least
+- The instantaneous change in phase is the angular frequency ($\omega=2\pi{}f$)
+
+</div>
+<div>
+
+![IQ Phaser](assets/iq-sampling/instantaneous-phase.gif)
+
+</div>
+</div>
+
+---
+
 # IQ Samples as Complex Numbers
 
-- Not that complicated, really
+- IQ samples are often represented a *complex numbers*
+  - The in-phase component is real and the quadrature component is imaginary ($I+Qi$)
+- Complex operations
+  - Absolute value is its magnitude (distance from the origin)
+  - Argument is the angle it makes with the positive real axis $[0,\pi{}]$
+  - Addition adds the real and imaginary components
+  - Multiplication adds the magnitudes and arguments
