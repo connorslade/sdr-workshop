@@ -82,18 +82,6 @@ It would be impractical to sample at higher rates due to limited data transfer r
 
 ---
 
-<div center>
-<img alt="IQ Over Time" src="assets/iq-sampling/iq-over-time.gif" width="90%"></img>
-</div>
-
-<!-- 
-The blue dot shows the signal itself (inphase) and the orange shows it 90° out of phase (quadrature).
-
-The quadrature view gives us more info on the signal, if it leads the blue its positive and if it lags behind its negative.
--->
-
----
-
 # IQ Sampling
 
 <div two-column>
@@ -108,6 +96,18 @@ The quadrature view gives us more info on the signal, if it leads the blue its p
 <img alt="Leading Components" src="assets/iq-sampling/leading-component.svg" width="100%"></img>
 </div>
 </div>
+
+---
+
+<div center>
+<img alt="IQ Over Time" src="assets/iq-sampling/iq-over-time.gif" width="90%"></img>
+</div>
+
+<!-- 
+The blue dot shows the signal itself (inphase) and the orange shows it 90° out of phase (quadrature).
+
+The quadrature view gives us more info on the signal, if it leads the blue its positive and if it lags behind its negative.
+-->
 
 ---
 

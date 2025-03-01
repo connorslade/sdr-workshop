@@ -254,7 +254,7 @@ $$
 
 # Time-Frequency Properties: Frequency Shift
 
-- By multiplying a time domain signal by a complex sinusoid at frequency $f_0$, we shift it by $f_0$ in the frequency domain
+- By multiplying a time domain signal by a sine wave at frequency $f_0$, we shift it by $f_0$ in the frequency domain
 - This is how the tuner in the RTL-SDR is able to change the center frequency, it also allows us to focus in on specific parts of the spectrum in software
 
 <br />
