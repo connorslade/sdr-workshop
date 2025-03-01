@@ -36,7 +36,7 @@ style: |
 
 # Basic Data Modulation
 
-- There are three parameters you can change on a sine wave, amplitude, frequency, and phase shift
+- There are three parameters you can change on a sine wave: amplitude, frequency, and phase shift
 - As such there are three main type of modulation schemes
   - Amplitude Modulation (AM)
   - Frequency Modulation (FM)
@@ -48,6 +48,12 @@ style: |
 # <!-- fit --> Analog Modulation
 
 I'm only covering AM and FM here because they are a lot more common than PM.
+
+<!--
+I don't think phase modulation was historically used in radio transmission. At least not commonly.
+
+It was used for other applications like analog synthesizers.
+-->
 
 ---
 
@@ -73,7 +79,7 @@ Due to the high susceptibility to noise / interference *much* higher broadcast p
 
 ---
 
-### Amplitude Modulation Percent
+### Amplitude Modulation Index
 
 - To reduce distortion, the modulation percent can be decreased
 - Modulation over 100% is called over-modulation
@@ -102,6 +108,14 @@ Due to the high susceptibility to noise / interference *much* higher broadcast p
 ---
 
 ### Frequency Modulation Bandwidth
+
+- The bandwidth of a FM signal is the difference between the lowest and highest instantaneous frequencies
+- Large bandwidths give higher quality audio, but use more radio spectrum
+
+<br>
+<div center>
+<img alt="" src="assets/data-modulation/fm-modulation-index.gif" width="85%"></img>
+</div>
 
 ---
 

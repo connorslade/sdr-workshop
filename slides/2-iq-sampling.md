@@ -199,6 +199,17 @@ The quadrature view gives us more info on the signal, if it leads the blue its p
   - The in-phase component is real and the quadrature component is imaginary ($I+Qi$)
 - Complex operations
   - Absolute value is its magnitude (distance from the origin)
-  - Argument is the angle it makes with the positive real axis $[0,\pi{}]$
+  - Argument is the angle it makes with the positive real axis $[-\pi{},\pi{}]$
   - Addition adds the real and imaginary components
-  - Multiplication adds the magnitudes and arguments
+  - Multiplication adds the angles and multiplies the lengths
+
+---
+
+## Complex Addition and Multiplication
+
+<div center>
+<div two-column-grid style="width: 90%;gap:60px">
+<div><img alt="" src="assets/iq-sampling/complex-addition.gif"></img></div>
+<div><img alt="" src="assets/iq-sampling/complex-multiplication.gif"></img></div>
+</div>
+</div>
