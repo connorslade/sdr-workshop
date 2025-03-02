@@ -8,6 +8,8 @@
 ## Todo
 
 - Bundle Audacity?
+- Verify / cleanup example program
+- Verify FM program
 - BFSK project slides & document
 - Spectrogram project slides & document
 

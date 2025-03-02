@@ -98,7 +98,7 @@ the negative frequencies will be complex conjugates of the positive frequency co
 </div>
 <div style="width: 70%;margin-left: 30px;">
 
-![Negative frequencies](assets/frequency-domain/negative-frequencies.png)
+![Negative frequencies](assets/spectrogram-project/negative-frequencies.png)
 
 </div>
 </div>
@@ -112,7 +112,7 @@ the negative frequencies will be complex conjugates of the positive frequency co
 - To avoid jumps, we use *windowing functions* to taper our signal to zero at the ends
 
 <div center>
-<img alt="Windowing functions" src="assets/frequency-domain/windowing-functions.bmp" style="width: 50%" />
+<img alt="Windowing functions" src="assets/spectrogram-project/windowing-functions.bmp" style="width: 50%" />
 </div>
 
 ---
@@ -178,7 +178,7 @@ What is the frequency range and bin width of the freq array:
 
 <div center>
 
-![FFT Shift](assets/frequency-domain/fft-shift.bmp)
+![FFT Shift](assets/spectrogram-project/fft-shift.bmp)
 
 </div>
 
@@ -196,7 +196,7 @@ What is the frequency range and bin width of the freq array:
 </div>
 <div style="width: 110%">
 
-![Waterfall Plot](assets/frequency-domain/waterfall-plot.bmp)
+![Waterfall Plot](assets/spectrogram-project/waterfall-plot.bmp)
 
 </div>
 </div>
@@ -217,16 +217,7 @@ Also known as a waterfall plot
 </div>
 <div style="width: 100%">
 
-<img src="assets/frequency-domain/fm-waterfall.png" alt="Waterfall plot of FM radio" />
+<img src="assets/spectrogram-project/fm-waterfall.png" alt="Waterfall plot of FM radio" />
 
 </div>
 </div>
-
----
-
-# Resources
-
-If you want more information on the topics covered in this lesson, check out these resources:
-
-- [PySDR &mdash; Frequency Domain](https://pysdr.org/content/frequency_domain.html)
-- [Veritasium &mdash; The Fast Fourier Transform Algorithm](https://www.youtube.com/watch?v=nmgFG7PUHfo)

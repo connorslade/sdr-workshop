@@ -42,8 +42,8 @@ In this workshop you will learn some of how these systems work and implement you
 <div>
 
 - A radio system where components that were traditionally implemented with analog hardware are implemented with software
-- SDR as a thing is a device that receives and digitizes radio frequency data for processing on a computer
-- Building blocks of wireless communication protocols like Wi-Fi (QAM), Bluetooth (FSK), and Cellular (QAM)
+- A device that receives and digitizes radio frequency data for processing on a computer
+- Used for research and development of new communication protocols
 
 </div>
 <div style="width: 70%;margin-left: 20px;">
@@ -71,7 +71,7 @@ In this workshop you will learn some of how these systems work and implement you
 
 <br />
 
-- While working on a driver for the Linux kernel, *Eric Fry* realized that the FM radio mode could be used to capture raw IQ samples
+- While working on a driver for the Linux kernel, *Eric Fry* realized that the FM radio mode could be used to capture raw samples
 
 </div>
 <div style="width: 70%">
@@ -90,7 +90,7 @@ In this workshop you will learn some of how these systems work and implement you
 
 - rtl-sdr is a software package that includes the librtlsdr library and various command line tools
 
-- librtlsdr lets you configure the tuner and receive IQ samples in your own programs
+- librtlsdr lets you configure the tuner and receive samples in your own programs
 
 - There are bindings to librtlsdr in many languages, including Python
 

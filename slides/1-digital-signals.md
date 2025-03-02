@@ -24,13 +24,6 @@ style: |
     border-radius: 6px;
   }
 
-  [code-block] {
-    background-color: #161b22;
-    border: solid #30363d 1px;
-    border-radius: 6px;
-    padding: 10px;
-  }
-
   hr {
     padding-top: 0.15em;
   }
@@ -73,10 +66,10 @@ R=(a*pi)/180
 
 ---
 
-# Sine Waves
-
 <div two-column>
 <div>
+
+# Sine Waves
 
 - $f(t)=a\sin(2\pi{}ft+p)$
   - Amplitude: $a$
@@ -86,11 +79,7 @@ R=(a*pi)/180
 - $\cos(t)=\cos(-t)$
 
 </div>
-<div>
-
-![Sine and Cosine on the Unit Circle](assets/digital-signals/sin-cos.gif)
-
-</div>
+<div><img alt="" src="assets/digital-signals/sine-wave.gif" width="90%"></img></div>
 </div>
 
 <!--
@@ -99,10 +88,10 @@ sin(x)=-sin(-x)
 
 ---
 
-# What is a Signal?
-
 <div two-column>
 <div>
+
+# Sampling
 
 - In order to digitally process a signal, an Analog to Digital Converter (ADC) is used
 
@@ -149,10 +138,10 @@ sin(x)=-sin(-x)
 
 ---
 
-# Aliasing
-
 <div two-column>
 <div>
+
+# Aliasing
 
 - The blue plots show the true signal and its frequency
 
@@ -199,16 +188,47 @@ Human hearing is approx 20Hz to 20,000 Hz
 <div>
 
 - Usually we think of signals in the *time domain*, where their value is changing through time
-- All signals can be represented with an infinite sum of sine waves with varying frequency, amplitude, and phases
-- A function or signal can be converted between the time and frequency domains with the *Fourier transform*
+- All signals can be represented as a sum of sine waves with varying frequency, amplitude, and phases
+- Some operations are very difficult to do in the time domain but much easier in the frequency domain
 
 </div>
 <div style="width: 90%; margin-left: 25px;">
 
-![A signal in the time and frequency domain](assets/frequency-domain/freq-domain.gif)
+![A signal in the time and frequency domain](assets/digital-signals/freq-domain.gif)
 
 </div>
 </div>
+
+---
+
+# Fourier Series
+
+- A Fourier series is the series of sine waves summed to reconstruct a signal
+- Sometimes you need an infinite number of terms for an *exact solution*
+
+<div center>
+<img alt="" src="assets/digital-signals/fourier-series.gif" width="90%"></img>
+</div>
+
+---
+
+# Visualizing the Frequency Domain
+
+<div two-column>
+<div>
+
+- You have interacted with the frequency domain already through audio visualizers and equalizers
+
+</div>
+<div style="width: 100%">
+<img alt="" src="assets/digital-signals/audio-equalizer.gif"></img>
+<img alt="" src="assets/digital-signals/spotify-equalizer.png"></img>
+</div>
+</div>
+
+<!--
+The equalizer is from Spotify® settings.
+-->
 
 ---
 
