@@ -69,7 +69,26 @@ R=(a*pi)/180
 <div two-column>
 <div>
 
-# Sine Waves
+# Sine and Cosine
+
+- As we move a point around the perimeter of a unit circle where its angle with the positive x axis is $\theta{}$
+  - $\theta$ ranges from $0$ to $2\pi$
+  - $\cos{\theta}$ is its $x$ coordinate
+  - $\sin{\theta}$ is its $y$ coordinate
+
+</div>
+<div style="width: 130%">
+
+![Radians](assets/digital-signals/sin-cos.gif)
+
+</div>
+
+---
+
+<div two-column>
+<div>
+
+# Sine Properties
 
 - $f(t)=a\sin(2\pi{}ft+p)$
   - Amplitude: $a$
@@ -79,7 +98,7 @@ R=(a*pi)/180
 - $\cos(t)=\cos(-t)$
 
 </div>
-<div><img alt="" src="assets/digital-signals/sine-wave.gif" width="90%"></img></div>
+<div style="width: 50%"><video src="assets/digital-signals/sine-wave.mp4" autoplay loop controls muted width="100%"></video></div>
 </div>
 
 <!--
@@ -182,6 +201,21 @@ Human hearing is approx 20Hz to 20,000 Hz
 
 ---
 
+# Fourier Series
+
+- A Fourier series is the series of sine waves summed to reconstruct a signal
+- Sometimes you need an infinite number of terms for an *exact solution*
+
+<div center>
+<video src="assets/digital-signals/fourier-series.mp4" autoplay loop controls muted width="80%"></video>
+</div>
+
+<!-- 
+Every signal has a fourier series!
+-->
+
+---
+
 # The Frequency Domain
 
 <div two-column>
@@ -197,17 +231,6 @@ Human hearing is approx 20Hz to 20,000 Hz
 ![A signal in the time and frequency domain](assets/digital-signals/freq-domain.gif)
 
 </div>
-</div>
-
----
-
-# Fourier Series
-
-- A Fourier series is the series of sine waves summed to reconstruct a signal
-- Sometimes you need an infinite number of terms for an *exact solution*
-
-<div center>
-<img alt="" src="assets/digital-signals/fourier-series.gif" width="90%"></img>
 </div>
 
 ---

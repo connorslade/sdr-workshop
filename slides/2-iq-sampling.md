@@ -100,7 +100,7 @@ It would be impractical to sample at higher rates due to limited data transfer r
 ---
 
 <div center>
-<img alt="IQ Over Time" src="assets/iq-sampling/iq-over-time.gif" width="90%"></img>
+<video src="assets/iq-sampling/iq-over-time.mp4" autoplay loop controls muted width="90%"></video>
 </div>
 
 <!-- 

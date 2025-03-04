@@ -7,11 +7,15 @@
 
 ## Todo
 
-- Bundle Audacity?
-- Verify / cleanup example program
-- Verify FM program
-- BFSK project slides & document
-- Spectrogram project slides & document
+- [x] Verify / cleanup example program
+- [ ] Verify FM program
+- [ ] BFSK project slides & document
+- [ ] Spectrogram project slides & document
+- [ ] Update graphics to use mp4 over gif
+  - [x] Digital Signals
+  - [ ] IQ Sampling
+  - [ ] Data Modulation
+  - [ ] FM Radio
 
 ## Ideas
 

@@ -54,8 +54,7 @@ In this workshop you will learn some of how these systems work and implement you
 </div>
 
 <!--
-- QAM → Quadrature Amplitude Modulation
-- FSK → Frequency Shift Keying
+The BFSK project is very similar to the way bluetooth 1.0 works, although like 700x slower...
 -->
 
 ---
@@ -125,10 +124,14 @@ sdr.close()
 <hr/>
 
 1. Install *Python* and *Visual Studio Code* from the Microsoft Store
-1. Download setup files linked on Google Classroom
-1. Run Zadig to fix the USB drivers
+2. Download setup files linked on the resources page
+3. Run Zadig to fix the USB drivers
    - Select RTL-SDR device, then click "Reinstall Driver"
-1. Run `example.py` to make sure everything is working
+4. Run `example.py` to make sure everything is working
+
+<!--
+Zadig will need the administrator password, so wait for someone to put that in.
+-->
 
 ---
 
