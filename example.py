@@ -2,6 +2,7 @@ from rtlsdr import RtlSdr
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import numpy as np
+assert RtlSdr is not None
 
 FFT_SIZE = 512
 
