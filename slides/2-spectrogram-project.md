@@ -20,7 +20,7 @@ style: |
     justify-content: center;
   }
 
-  [rounded] {
+  img, [rounded] {
     border-radius: 6px;
   }
 ---
@@ -36,10 +36,9 @@ style: |
 <div two-column>
 <div>
 
+- Operation that converts a time-domain signal to the frequency-domain
 - When working with discrete-time signals, we use a discrete Fourier transform (DFT)
-
 - A fast Fourier transform (FFT) is an efficient algorithm for computing the DFT
-
 - Complex values are used with FTs (instead of just real values) to represent the phase shifts
 
 </div>
@@ -92,7 +91,7 @@ the negative frequencies will be complex conjugates of the positive frequency co
 <div>
 
 - Negative frequency dose not exist physically, it's just a mathematical construct
-- Its effectively just a frequency relative to our defined center frequency
+- It's effectively just a frequency relative to our defined center frequency
 - If we tune to 100 MHz with a sample rate of 10 MHz, we will view the spectrum from 95 MHz to 105 MHz
 
 </div>
@@ -204,20 +203,3 @@ What is the frequency range and bin width of the freq array:
 <!--
 Also known as a waterfall plot
 -->
-
----
-
-# Try It Yourself
-
-<div two-column>
-<div>
-
-- In the folder you downloaded, open SDR++ and tune to 100 MHz, here you can see the signal in real time and decode it using WFM mode
-
-</div>
-<div style="width: 100%">
-
-<img src="assets/spectrogram-project/fm-waterfall.png" alt="Waterfall plot of FM radio" />
-
-</div>
-</div>

@@ -126,7 +126,7 @@ sin(x)=-sin(-x)
 
 ---
 
-# What Signal Could these Samples Represent?
+# What Signal Could These Samples Represent?
 
 <div center>
 
@@ -285,7 +285,7 @@ Additional properties:
 # Time-Frequency Properties: Linearity
 
 - If we add two signals in the time domain, the two frequency domain signals will also be added together.
-- If either of the time domain signals are scaled by a scalar, the frequency domain signal will also scaled by the same amount.
+- If either of the time domain signals are scaled, the frequency domain signal will also scaled by the same amount.
 
 <br />
 
@@ -316,5 +316,5 @@ $$
 <br />
 
 $$
-\boxed{x(at) \leftrightarrow X(\frac{f}{a} \times \frac{1}{\lvert a \rvert})}
+\boxed{x(at) \leftrightarrow X(\frac{f}{a})\times \frac{1}{\lvert a \rvert}}
 $$

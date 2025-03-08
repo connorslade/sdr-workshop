@@ -103,3 +103,20 @@ j is used over i because in electrical engineering i is used for current
 
 - Sound travels through air rather than propagating on its own like radio waves
 - We can also represent audio as a sequence of samples
+
+---
+
+# Try It Yourself
+
+<div two-column>
+<div>
+
+- In the folder you downloaded, open SDR++ and tune to 100 MHz, here you can see the signal in real time and decode it using WFM mode
+
+</div>
+<div style="width: 100%">
+
+<img src="assets/spectrogram-project/fm-waterfall.png" alt="Waterfall plot of FM radio" />
+
+</div>
+</div>

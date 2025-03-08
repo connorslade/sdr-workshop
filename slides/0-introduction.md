@@ -155,10 +155,10 @@ Zadig will need the administrator password, so wait for someone to put that in.
 
 # Workshop Outline
 
+1. Introduction
 1. Digital Signals
+   - Spectrogram Project
 1. IQ Sampling
+   - FM Radio Project
 1. Data Modulation
-1. Projects
-   1. FM Radio
-   1. Binary Data Transmission
-   1. Spectrogram
+   - Binary Data Transmission Project
