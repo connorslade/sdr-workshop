@@ -31,6 +31,23 @@ style: |
 
 ---
 
+<div two-column>
+<div style="transform: translateY(25%);">
+
+# Project Summary
+
+We will be writing a Python program that records and plots the RF spectrum over time.
+
+</div>
+<div style="width: 90%;margin-left: 10px">
+
+![Spectrogram](assets/spectrogram-project/spectrogram.png)
+
+</div>
+</div>
+
+---
+
 # The Fourier Transform
 
 <div two-column>
@@ -90,7 +107,7 @@ the negative frequencies will be complex conjugates of the positive frequency co
 <div two-column>
 <div>
 
-- Negative frequency dose not exist physically, it's just a mathematical construct
+- Negative frequency does not exist physically, it's just a mathematical construct
 - It's effectively just a frequency relative to our defined center frequency
 - If we tune to 100 MHz with a sample rate of 10 MHz, we will view the spectrum from 95 MHz to 105 MHz
 
@@ -106,7 +123,7 @@ the negative frequencies will be complex conjugates of the positive frequency co
 
 # Windowing
 
-- FFTs assume that the time-domain input signals are periodic, meaning the last sample connects back to the first
+- FTs assume that the time-domain input signals are periodic, meaning the last sample connects back to the first
 - Sharp jumps between samples cause lots of unwanted frequency artifacts
 - To avoid jumps, we use *windowing functions* to taper our signal to zero at the ends
 
@@ -116,33 +133,67 @@ the negative frequencies will be complex conjugates of the positive frequency co
 
 ---
 
-# FFT in Python
+# Introduction to `pyrtlsdr`
 
-<div two-column>
-<div style="width: 49.5%;">
+- PyRTL-SDR is used to initialize the SDR at startup then read samples
+- The first ~2000 samples should be ignored
 
 ```python
-from rtlsdr import RtlSdr
-import numpy as np
-
-sdr = RtlSdr()
-sdr.sample_rate = 2.048e6
-sdr.center_freq = 99.1e6
-
-# Discard the first ~2k samples as
-# they don't contain useful data.
-# Just a quirk of the hardware...
-sdr.read_samples(2048)
+sdr = RtlSdr() # Connect to RTL-SDR device
+sdr.sample_rate = 250_000 # 250 kHz
+sdr.center_freq = 200_000_000 # 200 MHz
+sdr.gain = 'auto'
 ```
 
-</div>
-<div style="width: 49.5%;">
+```python
+# Ignore first 2048 samples
+sdr.read_samples(2048)
+
+while True:
+  # Read 1024 IQ samples from the device
+  samples = sdr.read_samples(1024)
+```
+
+---
+
+# Introduction to `numpy`
+
+- Each chunk of samples needs to be processed quickly or the program won't run in real time (Python on its own is not fast enough!)
+- Numpy allows efficiently performing operations on large datasets
+
+<br>
 
 ```python
+array = np.array([1, 2, 3]) # Convert a Python List to a Numpy Array
+```
+
+---
+
+# Array Operations with `numpy`
+
+- Basic operations like `+`, `-`, `*`, and `/` can be performed *element-wise* on same sized arrays
+- Many mathematical functions are available like `np.hamming`, `np.fft.fft`, `np.fft.fftshift`, `np.abs`
+
+<br>
+
+```python
+a = np.array([1., 2., 3.])
+b = np.array([4., 5., 6.])
+
+a + b # [5., 7., 9.]
+np.mean(a) # 2.0
+```
+
+---
+
+# FFT in Python
+
+```python
+FFT_SIZE = 1024
+
 # Read in some samples (they are complex,
 # we will get to why in the next section)
-samples = sdr.read_samples(FFT_SIZE)
-              * np.hamming(FFT_SIZE)
+samples = sdr.read_samples(FFT_SIZE) * np.hamming(FFT_SIZE)
 
 # Use numpy to perform a FFT, transforming
 # our signal into the frequency domain.
@@ -152,9 +203,6 @@ fft = np.fft.fftshift(np.fft.fft(samples))
 # component, ignoring phase shifts.
 freq = np.abs(fft)
 ```
-
-</div>
-</div>
 
 <!--
 Note that the discarding of ~2048 samples has been omitted from this example.
@@ -203,3 +251,60 @@ What is the frequency range and bin width of the freq array:
 <!--
 Also known as a waterfall plot
 -->
+
+---
+
+# Spectrogram in Python
+
+- After we build up a list of FFT results, we need to show it as a 2D image
+- For this we can use the `plt.imshow` function from `matplotlib`
+  - Setting the `aspect` to 'auto' let it scale the image to fill the window
+
+<br>
+
+```python
+waterfall = []
+for _ in range(512):
+  samples = sdr.read_samples(FFT_SIZE) * np.hanning(FFT_SIZE)
+  fft = np.abs(np.fft.fftshift(np.fft.fft(samples)))
+  waterfall.append(fft)
+
+plt.imshow(waterfall, aspect='auto', cmap='plasma')
+plt.show()
+```
+
+---
+
+# Fixing the Axes
+
+- By default `imshow` will just show the number of pixels on each axis
+- We can define functions that take in the x and y coordinates and return nicer labels
+
+```python
+def x_tick_formatter(x, pos): pass
+def y_tick_formatter(y, pos): pass
+
+fig, ax = plt.subplots()
+ax.set_xlabel('Frequency (Hz)')
+ax.set_ylabel('Time (s)')
+ax.xaxis.set_major_formatter(mticker.FuncFormatter(x_tick_formatter))
+ax.yaxis.set_major_formatter(mticker.FuncFormatter(y_tick_formatter))
+```
+
+---
+
+# Python String Formatting
+
+- F-strings or formatted strings allow you to create a string with values from variables or expressions added in
+- Extra arguments can be passed to limit the number of digits after the decimal
+
+<br>
+
+```python
+a = 'world'
+b = 3.14159
+
+f'Hello, {a}'  # => 'Hello, world!'
+f'π ≈ {b}'     # => 'π ≈ 3.14159'
+f'π ≈ {b:.2f}' # => 'π ≈ 3.14'
+```

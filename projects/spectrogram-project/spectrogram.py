@@ -39,7 +39,7 @@ def y_tick_formatter(y, pos):
     return f"{time:.2f}"
 
 fig, ax = plt.subplots()
-ax.set_xlabel('Frequency (Hz)')
+ax.set_xlabel('Frequency (MHz)')
 ax.set_ylabel('Time (s)')
 ax.set_title('Waterfall Plot')
 ax.xaxis.set_major_formatter(mticker.FuncFormatter(x_tick_formatter))
