@@ -5,7 +5,7 @@ import numpy as np
 assert RtlSdr is not None
 
 FFT_SIZE = 1024
-DURATION = 10
+DURATION = 3
 
 sdr = RtlSdr()
 sdr.sample_rate = 2.048e6
