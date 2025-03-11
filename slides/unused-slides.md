@@ -120,3 +120,103 @@ j is used over i because in electrical engineering i is used for current
 
 </div>
 </div>
+
+---
+
+# Time-Frequency Properties
+
+<div two-column>
+<div>
+
+- Time-Frequency Properties or 'Fourier properties' tell us how the frequency domain signal is affected by certain modifications to time domain signal
+- There are more properties than what is covered here
+
+</div>
+<div style="width: 70%;">
+
+1. Linearity
+1. Frequency Shift
+1. Scaling in Time
+
+</div>
+</div>
+
+<!--
+Additional properties:
+
+- Convolution in Time Property
+- Convolution in Frequency Property
+-->
+
+---
+
+# Time-Frequency Properties: Linearity
+
+- If we add two signals in the time domain, the two frequency domain signals will also be added together.
+- If either of the time domain signals are scaled, the frequency domain signal will also scaled by the same amount.
+
+<br />
+
+$$
+\boxed{ax(t)+bx(t) \leftrightarrow aX(f)+bY(f)}
+$$
+
+---
+
+# Time-Frequency Properties: Frequency Shift
+
+- By multiplying a time domain signal by a sine wave at frequency $f_0$, we shift it by $f_0$ in the frequency domain
+- This is how the tuner in the RTL-SDR is able to change the center frequency, it also allows us to focus in on specific parts of the spectrum in software
+
+<br />
+
+$$
+\boxed{e^{i2\pi{}f_0t}x(t) \leftrightarrow X(f-f_0)}
+$$
+
+---
+
+# Time-Frequency Properties: Scaling in Time
+
+- Scaling in the time domain causes an inverse scaling in the frequency domain
+- This means that if we want to transfer data at a faster rate, we have to use physically more of the bandwidth
+
+<br />
+
+$$
+\boxed{x(at) \leftrightarrow X(\frac{f}{a})\times \frac{1}{\lvert a \rvert}}
+$$
+
+---
+
+# The Fourier Transform
+
+<div two-column>
+<div>
+
+- Operation that converts a time-domain signal to the frequency-domain
+- When working with discrete-time signals, we use a discrete Fourier transform (DFT)
+- A fast Fourier transform (FFT) is an efficient algorithm for computing the DFT
+- Complex values are used with FTs (instead of just real values) to represent the phase shifts
+
+</div>
+<div style="width: 60%;margin-left: 30px;">
+
+$$
+\hat{f}(\xi)=\int^{\infin}_{-\infin}f(x)e^{-i2\pi\xi x}dx\\[3mm]
+\Downarrow\\[3mm]
+X_k=\sum_{n=0}^{N-1}x_ne^{-i2\pi{}\frac{k}{N}n}
+$$
+
+</div>
+</div>
+
+<!--
+Because of how the FFT is implemented, it's best to use some power of 2 number of samples as input.
+
+$$
+\hat{f}(\xi)=\int^{\infin}_{-\infin}f(x)e^{-i2\pi\xi x}dx
+$$
+
+e^ix = cos(x) + i*sin(x)
+-->

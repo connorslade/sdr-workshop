@@ -18,7 +18,7 @@ This project has three main parts:
    1. Add the frequency domain representation to a list
 1. Show the spectrogram list with matplotlib
 
-Hints are provided in each section if you get stuck, but avoid looking at them if you can.
+Hints are provided in most section if you get stuck, but avoid looking at them if you can.
 
 ## PyRTL-SDR
 
@@ -36,7 +36,7 @@ These properties can be read or set. Floats are numbers with a decimal (like 1.2
 | ----------------: | ----- | -------------------------------------------------------------------------------------------------------------------------- |
 | `sdr.center_freq` | float | The frequency in Hz the SDR is tuned to. Set it to 100 MHz (100,000,000 Hz) to see the audio I am transmitting.            |
 | `sdr.sample_rate` | float | The number of samples taken per second. The highest sample rate that works well on these SDRs is 2.048 MHz (2,048,000 Hz). |
-|        `sdr.gain` | int   | The gain of the internal amplifier. Query the `sdr.gain_values` field to see what values you can use (192 is the highest). |
+|        `sdr.gain` | int   | The gain of the internal amplifier. Print the `sdr.gain_values` field to see what values you can use (192 is the highest). |
 
 <br>
 <details>
@@ -151,7 +151,7 @@ ax.yaxis.set_major_formatter(mticker.FuncFormatter(y_tick_formatter))
 ```
 
 > [note] Tip
-> For the x-axis, remember that the Nyquist sampling theorem states that the lowest frequency will be $c-\frac{f_c}{2}$ and the highest will be $c+\frac{f_c}{2}$, where $c$ is the center frequency and $f_s$ is the sample rate.
+> For the x-axis, remember that the Nyquist sampling theorem states that the lowest frequency will be $c-\frac{f_s}{2}$ and the highest will be $c+\frac{f_s}{2}$, where $c$ is the center frequency and $f_s$ is the sample rate.
 > For the y-axis, you know how many samples are in each row (the FFT size) and with `sdr.sample_rate` you know how many samples are taken each second and therefore the time each sample represents.
 
 ## Waterfall Extension
@@ -159,7 +159,9 @@ ax.yaxis.set_major_formatter(mticker.FuncFormatter(y_tick_formatter))
 A waterfall plot is a spectrogram that scrolls showing new data through time.
 I won't walk through exactly how to make one, but ill put some info here to work with.
 
-- See [animation.FuncAnimation](https://matplotlib.org/stable/api/_as_gen/matplotlib.animation.FuncAnimation.html) to make plots that update over time
+You will want to look into the matplotlib [animation.FuncAnimation](https://matplotlib.org/stable/api/_as_gen/matplotlib.animation.FuncAnimation.html) function to make plots that update over time.
+It lets you define a function that gets called repeatedly to update a plot.
+Your function should add a bunch of rows to the waterfall list then re-plot the image.
 
 ## Appendix
 

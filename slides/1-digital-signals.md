@@ -94,8 +94,8 @@ R=(a*pi)/180
   - Amplitude: $a$
   - Frequency: $f$
   - Phase Shift: $p$
-- $\cos(t) = \sin(t + \frac{\pi}{2})$
-- $\cos(t)=\cos(-t)$
+- $\cos(x) = \sin(x + \frac{\pi}{2})$
+- $\cos(x)=\cos(-x)$
 
 </div>
 <div style="width: 50%"><video src="assets/digital-signals/sine-wave.mp4" autoplay loop controls muted width="100%"></video></div>
@@ -184,13 +184,10 @@ Lower left: Using the same samples (now in orange), the default reconstruction a
 
 ---
 
-# The Nyquist–Shannon Sampling Theorem
+# The Nyquist Sampling Theorem
 
-If a function $x(t)$ contains no frequencies higher than $B$ hertz, then it can be completely determined from its ordinates at a sequence of points spaced less than $\frac{1}{2B}$ seconds apart.
-
-<hr>
-
-- The Nyquist Sampling Theorem states that your sample rate must be at least double the highest frequency in the sample to avoid aliasing
+- Your sample rate must be at least double the highest frequency in the sample to avoid aliasing
+- If you sample at some sample rate, the highest frequency you can reconstruct will be half that sample rate
 
 <!--
 Human hearing is approx 20Hz to 20,000 Hz
@@ -255,66 +252,20 @@ The equalizer is from Spotify® settings.
 
 ---
 
-# Time-Frequency Properties
-
 <div two-column>
 <div>
 
-- Time-Frequency Properties or 'Fourier properties' tell us how the frequency domain signal is affected by certain modifications to time domain signal
-- There are more properties than what is covered here
+# Spectrograms
+
+- Shows the frequency domain of a signal over time
+- Most of you saw this last week through SDR++
+
+<!--  -->
+
+- Making spectrograms will be our first project!
 
 </div>
-<div style="width: 70%;">
-
-1. Linearity
-1. Frequency Shift
-1. Scaling in Time
-
+<div style="width: 65%;">
+<video src="assets/digital-signals/waterfall.mp4" autoplay loop controls muted style="border-radius: 6px"></video>
 </div>
 </div>
-
-<!--
-Additional properties:
-
-- Convolution in Time Property
-- Convolution in Frequency Property
--->
-
----
-
-# Time-Frequency Properties: Linearity
-
-- If we add two signals in the time domain, the two frequency domain signals will also be added together.
-- If either of the time domain signals are scaled, the frequency domain signal will also scaled by the same amount.
-
-<br />
-
-$$
-\boxed{ax(t)+bx(t) \leftrightarrow aX(f)+bY(f)}
-$$
-
----
-
-# Time-Frequency Properties: Frequency Shift
-
-- By multiplying a time domain signal by a sine wave at frequency $f_0$, we shift it by $f_0$ in the frequency domain
-- This is how the tuner in the RTL-SDR is able to change the center frequency, it also allows us to focus in on specific parts of the spectrum in software
-
-<br />
-
-$$
-\boxed{e^{i2\pi{}f_0t}x(t) \leftrightarrow X(f-f_0)}
-$$
-
----
-
-# Time-Frequency Properties: Scaling in Time
-
-- Scaling in the time domain causes an inverse scaling in the frequency domain
-- This means that if we want to transfer data at a faster rate, we have to use physically more of the bandwidth
-
-<br />
-
-$$
-\boxed{x(at) \leftrightarrow X(\frac{f}{a})\times \frac{1}{\lvert a \rvert}}
-$$
