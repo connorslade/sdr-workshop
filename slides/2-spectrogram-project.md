@@ -74,36 +74,19 @@ We will be writing a Python program that records and plots the RF spectrum over 
   - More samples results in a higher resolution in the frequency domain
   - Each bin corresponds to $f_s/N\text{ Hz}$
 - Increasing the sample rate gives us a greater frequency range in the output
-  - The output range is $-f_s/2$ to $f_s/2$
+  - The output range is $c-f_s/2$ to $c+f_s/2$
   - This makes sense if you think back to the Nyquist Sampling Theorem
 
 <br />
 
-> $f_s$ is the sample rate.
+> $f_s$ is the sample rate, $c$ is the center frequency
 
 <!--
+If we tune to 100 MHz with a sample rate of 10 MHz, we will view the spectrum from 95 MHz to 105 MHz
+
 When givin a completely real time-domain input, the frequency-domain output's positive and negative segments will be identical in magnitude,
 the negative frequencies will be complex conjugates of the positive frequency components.
 -->
-
----
-
-# Negative Frequency?
-
-<div two-column>
-<div>
-
-- Negative frequency does not exist physically, it's just a mathematical construct
-- It's effectively just a frequency relative to our defined center frequency
-- If we tune to 100 MHz with a sample rate of 10 MHz, we will view the spectrum from 95 MHz to 105 MHz
-
-</div>
-<div style="width: 70%;margin-left: 30px;">
-
-![Negative frequencies](assets/spectrogram-project/negative-frequencies.png)
-
-</div>
-</div>
 
 ---
 
@@ -143,52 +126,7 @@ while True:
 
 ---
 
-# Introduction to `numpy`
-
-- Each chunk of samples needs to be processed quickly or the program won't run in real time (Python on its own is not fast enough!)
-- Numpy allows efficiently performing operations on large datasets
-- The PyRTL-SDR method `read_samples` actually returns a numpy array
-
-<br>
-
-```python
-array = np.array([1, 2, 3]) # Convert a Python List to a Numpy Array
-```
-
----
-
-# Array Operations with `numpy`
-
-- Basic operations like `+`, `-`, `*`, and `/` can be performed *element-wise* on same sized arrays
-- Many mathematical functions are available like `np.hanning`, `np.fft.fft`, `np.fft.fftshift`, `np.abs`
-
-<br>
-
-```python
-a = np.array([1., 2., 3.])
-b = np.array([4., 5., 6.])
-
-a + b # [5., 7., 9.]
-np.mean(a) # 2.0
-```
-
----
-
-# What is `np.fft.fftshift`?
-
-- Due to *math reasons*, the output of a Fourier Transform starts with the DC component, the positive frequencies, then the negative ones
-- We usually want negative frequencies on the left, DC in the middle, and positive frequencies on the right
-- This function just shifts the array around into the desired format
-
-<div center>
-
-![FFT Shift](assets/spectrogram-project/fft-shift.bmp)
-
-</div>
-
----
-
-# FFT in Python
+# FFT with `numpy`
 
 1. Read in some samples and multiply in the windowing function
 
@@ -211,14 +149,21 @@ freq = np.abs(fft)
 
 <!--
 Note that the discarding of ~2048 samples has been omitted from this example.
-
-What is the frequency range and bin width of the freq array:
-
-- center_freq - f_s/2 = 98.08
-- center_freq + f_s/2 = 100.12
-
-- f_s/fft_size = 4000 Hz
 -->
+
+---
+
+# What is `np.fft.fftshift`?
+
+- Due to *math reasons*, the output of a Fourier Transform starts with the DC component, the positive frequencies, then the negative ones
+- We usually want negative frequencies on the left, DC in the middle, and positive frequencies on the right
+- This function just shifts the array around into the desired format
+
+<div center>
+
+![FFT Shift](assets/spectrogram-project/fft-shift.bmp)
+
+</div>
 
 ---
 
@@ -240,6 +185,15 @@ for _ in range(512):
 plt.imshow(waterfall, aspect='auto', cmap='plasma')
 plt.show()
 ```
+
+---
+
+# Your Turn!
+
+- Plug in your RTL-SDR device, open Visual Studio Code and make a new file named `spectrogram.py`
+- Open the resources page linked on Google Classroom
+  - Open the 'Spectrogram Project' link on the resources page for a reference sheet with all the functions you will need
+  - You can also find this slide deck there
 
 ---
 
@@ -276,12 +230,3 @@ f'Hello, {a}'  # => 'Hello, world!'
 f'π ≈ {b}'     # => 'π ≈ 3.14159'
 f'π ≈ {b:.2f}' # => 'π ≈ 3.14'
 ```
-
----
-
-# Your Turn!
-
-- Plug in your RTL-SDR device, open Visual Studio Code and make a new file named `spectrogram.py`
-- Open the resources page linked on Google Classroom
-  - Open the 'Spectrogram Project' link on the resources page for a reference sheet with all the functions you will need
-  - You can also find this slide deck there

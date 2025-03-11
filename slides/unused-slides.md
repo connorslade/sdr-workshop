@@ -220,3 +220,36 @@ $$
 
 e^ix = cos(x) + i*sin(x)
 -->
+
+---
+
+# Introduction to `numpy`
+
+- Each chunk of samples needs to be processed quickly or the program won't run in real time (Python on its own is not fast enough!)
+- Numpy allows efficiently performing operations on large datasets
+- The PyRTL-SDR method `read_samples` actually returns a numpy array
+
+<br>
+
+```python
+array = np.array([1, 2, 3]) # Convert a Python List to a Numpy Array
+```
+
+---
+
+# Array Operations with `numpy`
+
+- Basic operations like `+`, `-`, `*`, and `/` can be performed *element-wise* on same sized arrays
+- Many mathematical functions are available like `np.hanning`, `np.fft.fft`, `np.fft.fftshift`, `np.abs`
+
+<br>
+
+```python
+a = np.array([1., 2., 3.])
+b = np.array([4., 5., 6.])
+
+a + b # [5., 7., 9.]
+np.mean(a) # 2.0
+```
+
+---
