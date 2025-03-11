@@ -127,9 +127,9 @@ the negative frequencies will be complex conjugates of the positive frequency co
 
 ```python
 sdr = RtlSdr() # Connect to RTL-SDR device
-sdr.sample_rate = 250_000 # 250 kHz
-sdr.center_freq = 200_000_000 # 200 MHz
-sdr.gain = 'auto'
+sdr.sample_rate = 2_048_000 # 2.048 MHz
+sdr.center_freq = 100_000_000 # 100 Mhz
+sdr.gain = 192 # Max gain
 ```
 
 ```python

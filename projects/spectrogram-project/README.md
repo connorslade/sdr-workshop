@@ -18,8 +18,6 @@ This project has three main parts:
    1. Add the frequency domain representation to a list
 1. Show the spectrogram list with matplotlib
 
-Hints are provided in most section if you get stuck, but avoid looking at them if you can.
-
 ## PyRTL-SDR
 
 From the `pyrtlsdr` package we will be using the `RtlSdr` class, the code below will connect to the default RTL-SDR device.

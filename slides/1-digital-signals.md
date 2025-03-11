@@ -253,7 +253,7 @@ The equalizer is from Spotify® settings.
 ---
 
 <div two-column>
-<div>
+<div style="width: 100%">
 
 # Spectrograms
 
@@ -265,7 +265,7 @@ The equalizer is from Spotify® settings.
 - Making spectrograms will be our first project!
 
 </div>
-<div style="width: 65%;">
-<video src="assets/digital-signals/waterfall.mp4" autoplay loop controls muted style="border-radius: 6px"></video>
+<div>
+<video src="assets/digital-signals/waterfall.mp4" autoplay loop controls muted width="100%" style="border-radius: 6px"></video>
 </div>
 </div>
