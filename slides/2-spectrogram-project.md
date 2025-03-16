@@ -70,9 +70,6 @@ We will be writing a Python program that records and plots the RF spectrum over 
 # Discrete Fourier Transform Properties
 
 - Operation that converts a time-domain signal to the frequency-domain
-- The size of the frequency domain output is the same as time domain input
-  - More samples results in a higher resolution in the frequency domain
-  - Each bin corresponds to $f_s/N\text{ Hz}$
 - Increasing the sample rate gives us a greater frequency range in the output
   - The output range is $c-f_s/2$ to $c+f_s/2$
   - This makes sense if you think back to the Nyquist Sampling Theorem
@@ -82,10 +79,9 @@ We will be writing a Python program that records and plots the RF spectrum over 
 > $f_s$ is the sample rate, $c$ is the center frequency
 
 <!--
-If we tune to 100 MHz with a sample rate of 10 MHz, we will view the spectrum from 95 MHz to 105 MHz
-
-When givin a completely real time-domain input, the frequency-domain output's positive and negative segments will be identical in magnitude,
-the negative frequencies will be complex conjugates of the positive frequency components.
+- The size of the frequency domain output is the same as time domain input
+  - More samples results in a higher resolution in the frequency domain
+  - Each bin corresponds to $f_s/N\text{ Hz}$
 -->
 
 ---

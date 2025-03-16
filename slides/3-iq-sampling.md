@@ -34,8 +34,7 @@ style: |
   }
 ---
 
-<h1 title>IQ Sampling
-</h1>
+<h1 title>IQ Sampling</h1>
 
 ## Software Defined Radio Workshop
 
@@ -126,11 +125,7 @@ The quadrature view gives us more info on the signal, if it leads the blue its p
 - Positive frequencies rotate counter-clockwise and negative frequencies rotate clockwise
 
 </div>
-<div>
-
-![IQ Phaser](assets/iq-sampling/iq-phaser.gif)
-
-</div>
+<video src="assets/iq-sampling/iq-phaser.mp4" autoplay loop controls muted></video>
 </div>
 
 ---
@@ -153,11 +148,7 @@ The quadrature view gives us more info on the signal, if it leads the blue its p
 - We can measure the magnitude (amplitude) of any IQ sample
 
 </div>
-<div>
-
-![Instantaneous Amplitude](assets/iq-sampling/instantaneous-amplitude.gif)
-
-</div>
+<video src="assets/iq-sampling/instantaneous-amplitude.mp4" autoplay loop controls muted></video>
 </div>
 
 ---
@@ -184,32 +175,5 @@ The quadrature view gives us more info on the signal, if it leads the blue its p
 - The instantaneous change in phase is the angular frequency ($\omega=2\pi{}f$)
 
 </div>
-<div>
-
-![IQ Phaser](assets/iq-sampling/instantaneous-phase.gif)
-
-</div>
-</div>
-
----
-
-# IQ Samples as Complex Numbers
-
-- IQ samples are often represented a *complex numbers*
-  - The in-phase component is real and the quadrature component is imaginary ($I+Qi$)
-- Complex operations
-  - Absolute value is its magnitude (distance from the origin)
-  - Argument is the angle it makes with the positive real axis $[-\pi{},\pi{}]$
-  - Addition adds the real and imaginary components
-  - Multiplication adds the angles and multiplies the lengths
-
----
-
-## Complex Addition and Multiplication
-
-<div center>
-<div two-column-grid style="width: 90%;gap:60px">
-<div><img alt="" src="assets/iq-sampling/complex-addition.gif"></img></div>
-<div><img alt="" src="assets/iq-sampling/complex-multiplication.gif"></img></div>
-</div>
+<video src="assets/iq-sampling/instantaneous-phase.mp4" autoplay loop controls muted></video>
 </div>

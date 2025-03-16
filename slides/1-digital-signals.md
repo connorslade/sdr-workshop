@@ -142,9 +142,7 @@ sin(x)=-sin(-x)
 <div>
 
 - Discrete-time samples have a frequency ambiguity that does not exist for continuous signals
-
 - A series of discrete-time samples can represent *infinitely many* continuous signals
-
 - This phenomenon is known as *aliasing*
 
 </div>

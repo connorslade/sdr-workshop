@@ -51,6 +51,13 @@ We will be writing a Python program that records a FM radio station from the SDR
   - This ends up messing up FM demodulation a lot,
 - We can avoid it by shifting our center frequency up a bit (100 kHz for example) then shifting our samples the other way in software
 
+<br>
+
+```python
+t = np.arange(len(samples)) / sdr.sample_rate
+samples *= np.exp(2j * np.pi * OFFSET * t)
+```
+
 ---
 
 # Ignoring Other Stations
@@ -79,8 +86,9 @@ We will be writing a Python program that records a FM radio station from the SDR
 
 </div>
 
-<div center style="transform:translateY(-60px)">
-<img alt="Low Pass Filter" src="assets/fm-project/lowpass.gif"></img>
+<div center style="transform:translateY(-30px)">
+<video src="assets/fm-project/low-pass.mp4" autoplay loop controls muted></video>
+
 </div>
 
 ---
@@ -141,9 +149,7 @@ a, b = samples[:-1], samples[1:]
 
 </div>
 </div>
-<div>
-<img alt="Arg range issues" src="assets/fm-project/arg-range-issues.gif"></img>
-</div>
+<video src="assets/fm-project/arg-range-issues.mp4" autoplay loop controls muted width="35%"></video>
 </div>
 
 ---

@@ -251,5 +251,28 @@ b = np.array([4., 5., 6.])
 a + b # [5., 7., 9.]
 np.mean(a) # 2.0
 ```
+---
 
 ---
+
+# IQ Samples as Complex Numbers
+
+- IQ samples are often represented a *complex numbers*
+  - The in-phase component is real and the quadrature component is imaginary ($I+Qi$)
+- Complex operations
+  - Absolute value is its magnitude (distance from the origin)
+  - Argument is the angle it makes with the positive real axis $[-\pi{},\pi{}]$
+  - Addition adds the real and imaginary components
+  - Multiplication adds the angles and multiplies the lengths
+
+---
+
+## Complex Addition and Multiplication
+
+<div center>
+<div two-column-grid style="width: 90%;gap:60px">
+<div><img alt="" src="assets/iq-sampling/complex-addition.gif"></img></div>
+<div><img alt="" src="assets/iq-sampling/complex-multiplication.gif"></img></div>
+</div>
+</div>
+
