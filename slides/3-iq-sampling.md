@@ -125,7 +125,7 @@ The quadrature view gives us more info on the signal, if it leads the blue its p
 - Positive frequencies rotate counter-clockwise and negative frequencies rotate clockwise
 
 </div>
-<video src="assets/iq-sampling/iq-phaser.mp4" autoplay loop controls muted></video>
+<video src="assets/iq-sampling/iq-phaser.mp4" autoplay loop controls muted width="100%"></video>
 </div>
 
 ---
@@ -148,7 +148,7 @@ The quadrature view gives us more info on the signal, if it leads the blue its p
 - We can measure the magnitude (amplitude) of any IQ sample
 
 </div>
-<video src="assets/iq-sampling/instantaneous-amplitude.mp4" autoplay loop controls muted></video>
+<video src="assets/iq-sampling/instantaneous-amplitude.mp4" autoplay loop controls muted width="100%"></video>
 </div>
 
 ---
@@ -175,5 +175,5 @@ The quadrature view gives us more info on the signal, if it leads the blue its p
 - The instantaneous change in phase is the angular frequency ($\omega=2\pi{}f$)
 
 </div>
-<video src="assets/iq-sampling/instantaneous-phase.mp4" autoplay loop controls muted></video>
+<video src="assets/iq-sampling/instantaneous-phase.mp4" autoplay loop controls muted width="100%"></video>
 </div>

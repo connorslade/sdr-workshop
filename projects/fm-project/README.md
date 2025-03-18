@@ -5,7 +5,7 @@ Make a new file named `fm-decode.py` in Visual Studio Code and copy in the follo
 
 ## Project Template
 
-Copy the following project template into your project file.
+Copy the following template into your project file.
 
 ```python
 from rtlsdr import RtlSdr
@@ -13,12 +13,12 @@ import numpy as np
 import scipy.io.wavfile as wavfile
 import scipy.signal as signal
 
+AUDIO_SAMPLE_RATE = 44_100
 RECORD_TIME = 10
 
 sdr = RtlSdr()
 # TODO: Initialize RTL-SDR
 
-# Shifts the frequencies in samples up by `frequency`
 def offset(samples, frequency):
     t = np.arange(len(samples)) / sdr.sample_rate
     return samples * np.exp(2j * np.pi * frequency * t)
@@ -39,7 +39,8 @@ sdr.close()
 
 # Save audio to a `.wav` file
 print("\n[*] Writing to file")
-wavfile.write("output.wav", int(sdr.sample_rate), np.array(buffer))
+buffer = signal.resample(buffer, int(len(buffer) * AUDIO_SAMPLE_RATE / sdr.sample_rate))
+wavfile.write("output.wav", AUDIO_SAMPLE_RATE, (np.array(buffer) * 32767).astype(np.int16))
 ```
 
 ## Initialize RTL-SDR
@@ -75,23 +76,6 @@ sdr.read_samples(2048)
 
 All of the code you write for this section should be in the `process_samples` function.
 
-### Converting to a Numpy Array
-
-While recording, the `process_samples` function gets called over and over with a List of samples to demodulate.
-In order to make computation more efficient and make use of premade signal processing functions, we first need to convert the incomming sample list to a Numpy array with the `numpy.array` function.
-
-<details>
-<summary>Hint</summary>
-
-In the `process_samples` function, we can use `np.array(samples)` to convert the List of samples to a Numpy array, like this:
-
-```python
-def process_samples(samples):
-    samples = np.array(samples)
-```
-
-</details>
-
 ### Removing Our Offset
 
 Because we set our center frequency 100 kHz above our signal of interest, we need to shift the frequencies of our samples by the same amount before any other processing steps.
@@ -103,7 +87,7 @@ def offset(samples, frequency):
     return samples * np.exp(2j * np.pi * frequency * t)
 ```
 
-You pass it a `numpy` sample array and a frequency and it will retuen a new array that has been frequency shifted.
+You pass it a sample array and a frequency and it will return a new array that has been frequency shifted.
 
 <details>
 <summary>Hint</summary>
@@ -116,7 +100,7 @@ samples = offset(samples, 100_000)
 
 ### Ignoring Other Stations
 
-Now that the signal we are interested in is centred at 0 Hz, we can make use of a *Low Pass Filter* to filter out other nearby stations or interference.
+Now that the signal we are interested in is centered at 0 Hz, we can make use of a *Low Pass Filter* to filter out other nearby stations or interference.
 The Scipy `signal.butter` function is used to design a filter with a given order and cutoff.
 It returns two lists, b and a, that represent the filter.
 
@@ -201,7 +185,5 @@ return frequency * 0.3
 
 ## Testing it Out
 
-Now, if you run your script by pressing the play button VS Code, you should see it count op for `RECORD_TIME` seconds then exit, leaving an `output.wav`.
+Now, if you run your script by pressing the play button VS Code, you should see it count up for `RECORD_TIME` seconds then exit, leaving an `output.wav`.
 If you play the WAV file, you *should* be able to hear the music being broadcast.
-
-If something is not working, you can take a look at [my implementation](fm-decode.py) or ask someone for help.

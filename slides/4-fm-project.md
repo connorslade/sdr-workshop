@@ -87,7 +87,7 @@ samples *= np.exp(2j * np.pi * OFFSET * t)
 </div>
 
 <div center style="transform:translateY(-30px)">
-<video src="assets/fm-project/low-pass.mp4" autoplay loop controls muted></video>
+<video src="assets/fm-project/low-pass.mp4" autoplay loop controls muted width="100%"></video>
 
 </div>
 
@@ -154,18 +154,9 @@ a, b = samples[:-1], samples[1:]
 
 ---
 
-# Putting It all Together
+# Your Turn
 
-```python
-def process_samples(samples):
-    t = np.arange(len(samples)) / sdr.sample_rate
-    samples *= np.exp(2j * np.pi * OFFSET * t)
-
-    b, a = signal.butter(5, BANDWIDTH, "low", fs=sdr.sample_rate)
-    samples = signal.lfilter(b, a, samples)
-
-    a, b = samples[:-1], samples[1:]
-    angular_frequency = np.angle(b / a)
-
-    return angular_frequency * GAIN
-```
+- Plug in your RTL-SDR device, open Visual Studio Code and make a new file named `fm-decode.py.py`
+- Open the [resources page](https://connorcode.com/files/Documents/sdr-workshop) linked on Google Classroom
+  - Open the ['Fm Radio Project'](https://connorcode.com/files/Documents/sdr-workshop/projects/fm-radio) link on the resources page for the starter code and a reference for the needed functions
+  - You can also find this slide deck there
