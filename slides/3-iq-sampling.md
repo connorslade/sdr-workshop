@@ -74,6 +74,12 @@ It would be impractical to sample at higher rates due to limited data transfer r
 
 ---
 
+<div center>
+<video src="assets/iq-sampling/signal-mixing.mp4" autoplay loop controls muted width="80%" style="transform: translateY(-40px)"></video>
+</div>
+
+---
+
 # Another Frequency Ambiguity
 
 - Internally SDRs use a local oscillator (LO) and a mixer to shift incoming RF (radio frequency) signals to *baseband*
